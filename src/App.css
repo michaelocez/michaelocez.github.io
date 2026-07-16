@@ -99,6 +99,13 @@ header {
   outline-offset: 4px;
 }
 
+.project-links a:focus-visible,
+.project-disclosure:focus-visible,
+.private-project-note a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
 .hero-grid {
   min-height: calc(100svh - 81px);
   align-content: center;
@@ -199,6 +206,189 @@ header {
   line-height: 1.55;
 }
 
+.projects-section {
+  position: relative;
+  scroll-margin-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.section-kicker {
+  margin: 0 0 0.9rem;
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin: 0 0 3rem;
+  color: var(--text-primary);
+  font-family: var(--font-editorial);
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.project-card {
+  display: flex;
+  min-height: 430px;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-between;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--border);
+  background: rgb(16 22 36 / 76%);
+  transition:
+    border-color 220ms ease,
+    background-color 220ms ease,
+    transform 220ms ease;
+}
+
+.project-card:hover {
+  border-color: rgb(145 160 255 / 55%);
+  background: rgb(18 25 42 / 90%);
+  transform: translateY(-3px);
+}
+
+.project-card--featured {
+  min-height: 390px;
+  grid-column: 1 / -1;
+  background:
+    linear-gradient(115deg, rgb(145 160 255 / 9%), transparent 55%),
+    rgb(16 22 36 / 78%);
+}
+
+.project-card--private {
+  background:
+    linear-gradient(140deg, rgb(145 160 255 / 8%), transparent 65%),
+    rgb(14 19 31 / 82%);
+}
+
+.project-card__topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.project-card__topline span:last-child {
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+.project-card__title {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-editorial);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.project-card__description {
+  max-width: 680px;
+  margin: 1.25rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.project-card__highlight {
+  margin: 1rem 0 0;
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.project-tags li {
+  padding: 0.38rem 0.65rem;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  background: rgb(9 12 19 / 60%);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.project-links a,
+.project-disclosure,
+.private-project-note a {
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.project-links a,
+.private-project-note a {
+  text-decoration-color: transparent;
+  text-underline-offset: 0.3rem;
+  transition:
+    color 180ms ease,
+    text-decoration-color 180ms ease;
+}
+
+.project-links a:hover,
+.private-project-note a:hover {
+  color: var(--accent-strong);
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+
+.private-project-action {
+  min-height: 42px;
+}
+
+.project-disclosure {
+  padding: 0;
+  border: 0;
+  color: var(--accent-strong);
+  background: transparent;
+  cursor: pointer;
+}
+
+.private-project-note {
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.private-project-note p {
+  margin: 0 0 0.85rem;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
 .hero-reveal {
   opacity: 0;
   animation: reveal 650ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -264,6 +454,17 @@ header {
     border-top: 1px solid var(--border);
     border-left: 0;
   }
+
+}
+
+@media (max-width: 800px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card--featured {
+    grid-column: auto;
+  }
 }
 
 @media (max-width: 640px) {
@@ -297,6 +498,12 @@ header {
 
   .primary-link,
   .secondary-link {
+    transition: none;
+  }
+
+  .project-card,
+  .project-links a,
+  .private-project-note a {
     transition: none;
   }
 }
