@@ -87,6 +87,25 @@ const projects: Project[] = [
   },
 ]
 
+const technicalProfile = [
+  {
+    label: 'Languages',
+    items: ['TypeScript', 'JavaScript', 'Java', 'Python', 'R', 'HTML', 'CSS'],
+  },
+  {
+    label: 'Frameworks & data',
+    items: ['React', 'Node.js', 'Express', 'MySQL', 'JavaFX'],
+  },
+  {
+    label: 'Engineering',
+    items: ['REST APIs', 'Automated testing', 'CI/CD', 'Gradle'],
+  },
+  {
+    label: 'Workflow',
+    items: ['Git', 'GitHub Actions', 'GitHub Copilot', 'OpenAI Codex'],
+  },
+]
+
 function App() {
   const pointerFrame = useRef<number | null>(null)
   const pointerPosition = useRef({ x: 0, y: 0 })
@@ -268,6 +287,41 @@ function App() {
             {projects.slice(1).map((project) => (
               <ProjectCard key={project.title} project={project} />
             ))}
+          </div>
+        </section>
+
+        <section
+          className="about-section mx-auto w-full max-w-[1180px] px-6 py-20 md:px-10 md:py-28"
+          id="about"
+        >
+          <p className="section-kicker">Background</p>
+          <h2 className="section-title">About</h2>
+
+          <div className="about-layout">
+            <div className="about-copy">
+              <p>
+                I&apos;m a recent Computer Science graduate with a minor in
+                Statistics from the University of Canterbury. My studies and
+                projects have given me experience across full-stack development,
+                interactive software, and statistical analysis.
+              </p>
+            </div>
+
+            <div className="technical-profile">
+              <h3>Technical profile</h3>
+              <div className="skill-groups">
+                {technicalProfile.map((group) => (
+                  <div className="skill-group" key={group.label}>
+                    <h4>{group.label}</h4>
+                    <ul aria-label={group.label}>
+                      {group.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       </main>
