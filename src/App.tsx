@@ -1,6 +1,7 @@
 import './App.css'
 
-import type { CSSProperties } from 'react'
+import { useEffect, useRef } from 'react'
+import type { CSSProperties, PointerEventHandler } from 'react'
 
 const externalLinks = [
   { label: 'GitHub', href: 'https://github.com/michaelocez' },
@@ -32,13 +33,36 @@ function createStars(count: number) {
 const stars = createStars(40)
 
 function App() {
+  const pointerFrame = useRef<number | null>(null)
+  const pointerPosition = useRef({ x: 0, y: 0 })
+
+  useEffect(() => {
+    return () => {
+      if (pointerFrame.current !== null) {
+        cancelAnimationFrame(pointerFrame.current)
+      }
+    }
+  }, [])
+
+  const handlePointerMove: PointerEventHandler<HTMLDivElement> = (event) => {
+    if (event.pointerType !== 'mouse') return
+
+    pointerPosition.current = { x: event.clientX, y: event.clientY }
+    if (pointerFrame.current !== null) return
+
+    const container = event.currentTarget
+    pointerFrame.current = requestAnimationFrame(() => {
+      const { x, y } = pointerPosition.current
+      container.style.setProperty('--pointer-x', `${x}px`)
+      container.style.setProperty('--pointer-y', `${y}px`)
+      pointerFrame.current = null
+    })
+  }
+
   return (
     <div
       className="site-shell min-h-screen overflow-hidden"
-      onPointerMove={(event) => {
-        event.currentTarget.style.setProperty('--pointer-x', `${event.clientX}px`)
-        event.currentTarget.style.setProperty('--pointer-y', `${event.clientY}px`)
-      }}
+      onPointerMove={handlePointerMove}
     >
       <div className="star-field" aria-hidden="true">
         {stars.map((star) => (
@@ -60,7 +84,7 @@ function App() {
                   className="nav-link"
                   href={link.href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   {link.label}
                   <span aria-hidden="true"> ↗</span>
@@ -89,7 +113,7 @@ function App() {
                 className="primary-link"
                 href="https://github.com/michaelocez"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 Explore my work <span aria-hidden="true">↗</span>
               </a>
