@@ -1,121 +1,124 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 
+import type { CSSProperties } from 'react'
+
+const externalLinks = [
+  { label: 'GitHub', href: 'https://github.com/michaelocez' },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/michael-huang-2a55572ba/',
+  },
+]
+
+function createStars(count: number) {
+  let seed = 329
+  const random = () => {
+    seed = (seed * 1664525 + 1013904223) >>> 0
+    return seed / 4294967296
+  }
+
+  return Array.from({ length: count }, (_, index) => ({
+    id: index,
+    style: {
+      '--star-x': `${(2 + random() * 96).toFixed(2)}%`,
+      '--star-y': `${(3 + random() * 94).toFixed(2)}%`,
+      '--star-size': `${(0.8 + random() * 1.4).toFixed(2)}px`,
+      '--star-delay': `${(-random() * 10).toFixed(2)}s`,
+      '--star-duration': `${(5 + random() * 7).toFixed(2)}s`,
+    } as CSSProperties,
+  }))
+}
+
+const stars = createStars(40)
+
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div
+      className="site-shell min-h-screen overflow-hidden"
+      onPointerMove={(event) => {
+        event.currentTarget.style.setProperty('--pointer-x', `${event.clientX}px`)
+        event.currentTarget.style.setProperty('--pointer-y', `${event.clientY}px`)
+      }}
+    >
+      <div className="star-field" aria-hidden="true">
+        {stars.map((star) => (
+          <span className="star" key={star.id} style={star.style} />
+        ))}
+      </div>
+      <div className="pointer-glow" aria-hidden="true" />
 
-      <div className="ticks"></div>
+      <header className="mx-auto flex w-full max-w-[1180px] items-center justify-between px-6 py-6 md:px-10 md:py-8">
+        <a className="wordmark" href="#top" aria-label="Portfolio home">
+          MH
+        </a>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
+        <nav aria-label="Primary navigation">
+          <ul className="flex items-center gap-5 sm:gap-8">
+            {externalLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  className="nav-link"
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {link.label}
+                  <span aria-hidden="true"> ↗</span>
+                </a>
+              </li>
+            ))}
           </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        </nav>
+      </header>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <main id="top">
+        <section className="hero-grid mx-auto grid w-full max-w-[1180px] gap-14 px-6 pb-16 pt-16 md:px-10 md:pb-24 md:pt-24 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-24 lg:pb-32 lg:pt-32">
+          <div className="max-w-[790px]">
+            <h1 className="hero-title hero-reveal">
+              Hi, I&apos;m <span>Michael.</span>
+            </h1>
+
+            <p className="hero-copy hero-reveal max-w-[650px]">
+              I&apos;m a developer with a background in Computer Science and
+              Statistics, building full-stack applications, interactive
+              experiences, and data-driven projects.
+            </p>
+
+            <div className="hero-actions hero-reveal flex flex-wrap gap-3">
+              <a
+                className="primary-link"
+                href="https://github.com/michaelocez"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Explore my work <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                className="secondary-link"
+                href="mailto:michaelhuang329@gmail.com"
+              >
+                Contact me
+              </a>
+            </div>
+          </div>
+
+          <aside className="hero-meta hero-reveal" aria-label="Profile summary">
+            <div>
+              <p className="meta-label">Based in</p>
+              <p className="meta-value">New Zealand</p>
+            </div>
+            <div>
+              <p className="meta-label">Focus</p>
+              <p className="meta-value">Full-stack development &amp; data</p>
+            </div>
+            <div>
+              <p className="meta-label">Currently</p>
+              <p className="meta-value">Open to graduate opportunities</p>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
   )
 }
 
