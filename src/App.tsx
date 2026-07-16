@@ -106,6 +106,8 @@ const technicalProfile = [
   },
 ]
 
+const currentYear = new Date().getFullYear()
+
 function App() {
   const pointerFrame = useRef<number | null>(null)
   const pointerPosition = useRef({ x: 0, y: 0 })
@@ -362,10 +364,10 @@ function App() {
           </nav>
 
           <div className="footer-meta">
-            <p>&copy; 2026</p>
-          <a href="#top">
-            Back to top <span aria-hidden="true">{'\u2191'}</span>
-          </a>
+            <p>&copy; {currentYear}</p>
+            <a href="#top">
+              Back to top <span aria-hidden="true">{'\u2191'}</span>
+            </a>
           </div>
         </div>
       </footer>
