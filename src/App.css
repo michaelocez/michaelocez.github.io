@@ -245,7 +245,7 @@ header {
   justify-content: space-between;
   padding: clamp(1.5rem, 4vw, 2.5rem);
   border: 1px solid var(--border);
-  background: rgb(16 22 36 / 76%);
+  background-color: rgb(16 22 36 / 76%);
   transition:
     border-color 220ms ease,
     background-color 220ms ease,
@@ -254,22 +254,28 @@ header {
 
 .project-card:hover {
   border-color: rgb(145 160 255 / 55%);
-  background: rgb(18 25 42 / 90%);
+  background-color: rgb(18 25 42 / 90%);
   transform: translateY(-3px);
 }
 
 .project-card--featured {
   min-height: 390px;
   grid-column: 1 / -1;
-  background:
-    linear-gradient(115deg, rgb(145 160 255 / 9%), transparent 55%),
-    rgb(16 22 36 / 78%);
+  background-color: rgb(16 22 36 / 78%);
+  background-image: linear-gradient(
+    115deg,
+    rgb(145 160 255 / 9%),
+    transparent 55%
+  );
 }
 
 .project-card--private {
-  background:
-    linear-gradient(140deg, rgb(145 160 255 / 8%), transparent 65%),
-    rgb(14 19 31 / 82%);
+  background-color: rgb(14 19 31 / 82%);
+  background-image: linear-gradient(
+    140deg,
+    rgb(145 160 255 / 8%),
+    transparent 65%
+  );
 }
 
 .project-card__topline {
