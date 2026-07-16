@@ -1,7 +1,9 @@
 import './App.css'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { CSSProperties, PointerEventHandler } from 'react'
+import ProjectCard from './components/ProjectCard'
+import type { Project } from './components/ProjectCard'
 
 const externalLinks = [
   { label: 'GitHub', href: 'https://github.com/michaelocez' },
@@ -32,9 +34,63 @@ function createStars(count: number) {
 
 const stars = createStars(40)
 
+const projects: Project[] = [
+  {
+    number: '01',
+    category: 'Full-stack development',
+    title: 'Game Review Platform',
+    description:
+      'A full-stack game review application with a component-based React frontend and a separate REST API for reviews and user data.',
+    highlight: 'One product, developed across two focused repositories.',
+    technologies: ['React', 'TypeScript', 'Material UI', 'Express', 'MySQL'],
+    links: [
+      {
+        label: 'Frontend',
+        href: 'https://github.com/michaelocez/game-review-frontend',
+      },
+      {
+        label: 'API',
+        href: 'https://github.com/michaelocez/game-review-api',
+      },
+    ],
+    featured: true,
+  },
+  {
+    number: '03',
+    category: 'Statistical analysis',
+    title: 'Car Colour Analysis',
+    description:
+      'A real-world study comparing vehicle colour observations from university car parks with New Zealand fleet-registration proportions.',
+    highlight: 'Applied chi-square testing and communicated the findings in R.',
+    technologies: ['R', 'Chi-square testing', 'Data collection', 'Reporting'],
+    links: [
+      {
+        label: 'Repository',
+        href: 'https://github.com/michaelocez/STAT312-Car-Colours-Project',
+      },
+    ],
+  },
+  {
+    number: '04',
+    category: 'Game development',
+    title: 'Cart Filler Game',
+    description:
+      'A co-developed desktop game with modular Java packages, custom media, automated tests, and a reproducible build process.',
+    highlight: 'Built collaboratively with testing and maintainability in mind.',
+    technologies: ['Java', 'JavaFX', 'Gradle', 'JUnit'],
+    links: [
+      {
+        label: 'Repository',
+        href: 'https://github.com/michaelocez/cart-filler-game',
+      },
+    ],
+  },
+]
+
 function App() {
   const pointerFrame = useRef<number | null>(null)
   const pointerPosition = useRef({ x: 0, y: 0 })
+  const [showRobloxContact, setShowRobloxContact] = useState(false)
 
   useEffect(() => {
     return () => {
@@ -61,7 +117,7 @@ function App() {
 
   return (
     <div
-      className="site-shell min-h-screen overflow-hidden"
+      className="site-shell min-h-screen overflow-x-hidden"
       onPointerMove={handlePointerMove}
     >
       <div className="star-field" aria-hidden="true">
@@ -111,11 +167,9 @@ function App() {
             <div className="hero-actions hero-reveal flex flex-wrap gap-3">
               <a
                 className="primary-link"
-                href="https://github.com/michaelocez"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#work"
               >
-                Explore my work <span aria-hidden="true">↗</span>
+                Explore my work <span aria-hidden="true">{'\u2193'}</span>
               </a>
               <a
                 className="secondary-link"
@@ -140,6 +194,81 @@ function App() {
               <p className="meta-value">Open to graduate opportunities</p>
             </div>
           </aside>
+        </section>
+
+        <section
+          className="projects-section mx-auto w-full max-w-[1180px] px-6 py-20 md:px-10 md:py-28"
+          id="work"
+        >
+          <p className="section-kicker">What I&apos;ve done</p>
+          <h2 className="section-title">Projects</h2>
+
+          <div className="project-grid">
+            <ProjectCard project={projects[0]} />
+
+            <article className="project-card project-card--private">
+              <div className="project-card__topline">
+                <span>02</span>
+                <span>Independent game development</span>
+              </div>
+
+              <div>
+                <h3 className="project-card__title">
+                  Published Roblox Experience
+                </h3>
+                <p className="project-card__description">
+                  Designed, scripted, and published a game that
+                  attracted more than 2,000 players during active development.
+                </p>
+                <p className="project-card__highlight">
+                  Managed the full development cycle, player feedback, and a
+                  persistent leaderboard.
+                </p>
+              </div>
+
+              <ul
+                className="project-tags"
+                aria-label="Published Roblox Experience technologies"
+              >
+                <li>Lua</li>
+                <li>Roblox Studio</li>
+                <li>DataStores</li>
+                <li>Live operations</li>
+              </ul>
+
+              <div className="private-project-action">
+                <button
+                  type="button"
+                  className="project-disclosure"
+                  aria-expanded={showRobloxContact}
+                  aria-controls="roblox-project-contact"
+                  onClick={() => setShowRobloxContact((visible) => !visible)}
+                >
+                  {showRobloxContact ? 'Hide details' : 'Request project details'}
+                </button>
+
+                {showRobloxContact && (
+                  <div
+                    className="private-project-note"
+                    id="roblox-project-contact"
+                  >
+                    <p>
+                      I keep this project unlisted publicly, but I&apos;m happy
+                      to share more context upon request.
+                    </p>
+                    <a href="mailto:michaelhuang329@gmail.com?subject=Roblox%20project%20enquiry">
+                      Email me about this project{' '}
+                      <span aria-hidden="true">{'\u2192'}</span>
+                    </a>
+                  </div>
+                )}
+              </div>
+            </article>
+
+            {projects.slice(1).map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </div>
         </section>
       </main>
     </div>
