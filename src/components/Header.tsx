@@ -7,7 +7,7 @@ function Header() {
         MH
       </a>
 
-      <nav aria-label="Primary navigation">
+      <nav aria-label="Social links">
         <ul className="flex items-center gap-5 sm:gap-8">
           {externalLinks.map((link) => (
             <li key={link.label}>

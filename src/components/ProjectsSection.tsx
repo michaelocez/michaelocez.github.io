@@ -55,21 +55,20 @@ function ProjectsSection() {
               {showRobloxContact ? 'Hide details' : 'Request project details'}
             </button>
 
-            {showRobloxContact && (
-              <div
-                className="private-project-note"
-                id="roblox-project-contact"
-              >
-                <p>
-                  I keep this project unlisted publicly, but I&apos;m happy to
-                  share more context upon request.
-                </p>
-                <a href="mailto:michaelhuang329@gmail.com?subject=Roblox%20project%20enquiry">
-                  Email me about this project{' '}
-                  <span aria-hidden="true">{'→'}</span>
-                </a>
-              </div>
-            )}
+            <div
+              className="private-project-note"
+              id="roblox-project-contact"
+              hidden={!showRobloxContact}
+            >
+              <p>
+                I keep this project unlisted publicly, but I&apos;m happy to share
+                more context upon request.
+              </p>
+              <a href="mailto:michaelhuang329@gmail.com?subject=Roblox%20project%20enquiry">
+                Email me about this project{' '}
+                <span aria-hidden="true">{'→'}</span>
+              </a>
+            </div>
           </div>
         </article>
 
