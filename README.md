@@ -1,16 +1,97 @@
-# React + Vite
+# Michael H | Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![CI/CD](https://github.com/michaelocez/michaelocez.github.io/actions/workflows/pipeline.yml/badge.svg?branch=main)](https://github.com/michaelocez/michaelocez.github.io/actions/workflows/pipeline.yml)
 
-Currently, two official plugins are available:
+A personal developer portfolio presenting selected full-stack, interactive, and statistical projects. Built with React and TypeScript and deployed to GitHub Pages through an automated CI/CD pipeline.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[View the live portfolio](https://michaelocez.github.io/)
 
-## React Compiler
+## About
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The portfolio introduces my Computer Science and Statistics background, presents selected project work, and provides an overview of the technologies and engineering practices I have used.
 
-## Expanding the ESLint configuration
+The interface uses a responsive dark design with subtle background animation, pointer interaction, keyboard focus styles, and reduced-motion support.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technology
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- ESLint
+- GitHub Actions
+- GitHub Pages
+
+## Running locally
+
+### Prerequisites
+
+- Node.js 24 is recommended to match the CI environment
+- npm
+
+### Setup
+
+```bash
+git clone https://github.com/michaelocez/michaelocez.github.io.git
+cd michaelocez.github.io
+npm ci
+npm run dev
+```
+
+Vite will print the local development URL in the terminal.
+
+## Available scripts
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the Vite development server with hot module replacement. |
+| `npm run lint` | Check the project with ESLint. |
+| `npm run build` | Type-check the project and create an optimized production build in `dist`. |
+| `npm run preview` | Preview the production build locally. |
+
+## Project structure
+
+```text
+.
+|-- .github/workflows/
+|   `-- pipeline.yml          # CI/CD validation and deployment
+|-- public/
+|   `-- favicon.png           # Portfolio favicon
+|-- src/
+|   |-- components/           # Page sections and reusable UI components
+|   |-- data/
+|   |   `-- portfolio.ts      # Projects, links, and technical profile
+|   |-- hooks/
+|   |   `-- usePointerGlow.ts # Pointer interaction logic
+|   |-- types/
+|   |   `-- portfolio.ts      # Shared portfolio data types
+|   |-- App.css               # Portfolio layout and visual styling
+|   |-- App.tsx               # Top-level page composition
+|   `-- main.tsx              # React application entry point
+|-- index.html
+`-- package.json
+```
+
+## CI/CD pipeline
+
+The GitHub Actions workflow provides one connected validation and deployment pipeline.
+
+For pull requests targeting `main`, the `Quality` job:
+
+1. Checks out the repository.
+2. Sets up Node.js 24 with npm caching.
+3. Installs the locked dependencies with `npm ci`.
+4. Runs ESLint.
+5. Runs the TypeScript and Vite production build.
+
+When validated changes are pushed or merged to `main`, the pipeline also:
+
+1. Uploads the generated `dist` directory as a GitHub Pages artifact.
+2. Runs the `Deploy` job after the `Quality` job succeeds.
+3. Publishes the validated artifact to the `github-pages` environment.
+
+Deployment is intentionally skipped for pull requests, so proposed changes are checked without being published.
+
+## Deployment
+
+The portfolio is hosted with GitHub Pages at [michaelocez.github.io](https://michaelocez.github.io/). Merges to `main` are deployed automatically after the pipeline passes.
