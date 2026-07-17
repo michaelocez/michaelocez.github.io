@@ -1,13 +1,4 @@
-export type Project = {
-  number: string
-  category: string
-  title: string
-  description: string
-  highlight: string
-  technologies: string[]
-  links: { label: string; href: string }[]
-  featured?: boolean
-}
+import type { Project } from '../types/portfolio'
 
 type ProjectCardProps = {
   project: Project
