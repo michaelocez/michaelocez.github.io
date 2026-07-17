@@ -16,10 +16,14 @@ function App() {
       className="site-shell min-h-screen overflow-x-hidden"
       onPointerMove={handlePointerMove}
     >
+      <a className="skip-link" href="#top">
+        Skip to content
+      </a>
+
       <BackgroundEffects />
       <Header />
 
-      <main id="top">
+      <main id="top" tabIndex={-1}>
         <HeroSection />
         <ProjectsSection />
         <AboutSection />
