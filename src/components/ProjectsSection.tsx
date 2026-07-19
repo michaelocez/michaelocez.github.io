@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import { projects } from '../data/portfolio'
+import type { Project } from '../types/portfolio'
 import ProjectCard from './ProjectCard'
+import ProjectDetailsModal from './ProjectDetailsModal'
 
 function ProjectsSection() {
   const [showRobloxContact, setShowRobloxContact] = useState(false)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   return (
     <section
@@ -14,7 +17,10 @@ function ProjectsSection() {
       <h2 className="section-title">Projects</h2>
 
       <div className="project-grid">
-        <ProjectCard project={projects[0]} />
+        <ProjectCard
+          project={projects[0]}
+          onOpenProject={setSelectedProject}
+        />
 
         <article className="project-card project-card--private">
           <div className="project-card__topline">
@@ -76,6 +82,11 @@ function ProjectsSection() {
           <ProjectCard key={project.title} project={project} />
         ))}
       </div>
+
+      <ProjectDetailsModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   )
 }
