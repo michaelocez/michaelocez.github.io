@@ -25,7 +25,7 @@ function ProjectsSection() {
         <article className="project-card project-card--private">
           <div className="project-card__topline">
             <span>02</span>
-            <span>Independent game development</span>
+            <span>Game development</span>
           </div>
 
           <div>
