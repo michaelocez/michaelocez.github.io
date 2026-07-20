@@ -1,19 +1,24 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #06070b;
-  --surface: #0f1013;
-  --surface-raised: #15161a;
-  --surface-hover: #1a1b20;
+  --background: #010102;
+  --surface: #0f1011;
+  --surface-raised: #141516;
+  --surface-hover: #18191a;
+  --surface-high: #191a1b;
   --text-primary: #f7f8f8;
-  --text-secondary: #aeb4bf;
-  --text-subtle: #7d838c;
-  --border: #25272d;
-  --border-strong: #353740;
-  --accent: #6f79dc;
-  --accent-hover: #8791f2;
-  --accent-strong: #aab2ff;
-  --accent-soft: rgb(111 121 220 / 12%);
+  --text-secondary: #d0d6e0;
+  --text-subtle: #8a8f98;
+  --text-tertiary: #62666d;
+  --border: #23252a;
+  --border-strong: #34343a;
+  --border-tertiary: #3e3e44;
+  --accent: #5e6ad2;
+  --accent-hover: #828fff;
+  --accent-focus: #5e69d1;
+  --accent-strong: #828fff;
+  --accent-soft: rgb(94 106 210 / 12%);
+  --on-accent: #ffffff;
   --radius-control: 0.5rem;
   --radius-card: 0.75rem;
   --radius-panel: 1rem;
@@ -62,5 +67,5 @@ a {
 
 ::selection {
   color: var(--text-primary);
-  background: rgb(111 121 220 / 30%);
+  background: rgb(94 106 210 / 30%);
 }
