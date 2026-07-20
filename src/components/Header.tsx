@@ -2,7 +2,7 @@ import { externalLinks } from '../data/portfolio'
 
 function Header() {
   return (
-    <header className="mx-auto flex w-full max-w-[1180px] items-center justify-between px-6 py-6 md:px-10 md:py-8">
+    <header className="mx-auto flex w-full max-w-[1180px] items-center justify-between px-6 py-5 md:px-10">
       <a className="wordmark" href="#top" aria-label="Portfolio home">
         MH
       </a>

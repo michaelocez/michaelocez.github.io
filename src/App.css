@@ -111,20 +111,20 @@ header {
 .footer-links a,
 .footer-meta a {
   display: inline-flex;
-  min-height: 24px;
+  min-height: 40px;
   align-items: center;
 }
 
 .wordmark {
   color: var(--text-primary);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-decoration: none;
 }
 
 .nav-link {
-  color: var(--text-secondary);
+  color: var(--text-subtle);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
   text-decoration: none;
@@ -158,12 +158,12 @@ header {
 }
 
 .hero-grid {
-  min-height: calc(100svh - 81px);
+  min-height: calc(100svh - 65px);
   align-content: center;
 }
 
 .meta-label {
-  color: var(--accent);
+  color: var(--text-subtle);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -175,7 +175,7 @@ header {
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-editorial);
-  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-size: var(--type-display);
   font-weight: 400;
   letter-spacing: -0.055em;
   line-height: 1.02;
@@ -186,14 +186,14 @@ header {
 }
 
 .hero-copy {
-  margin: 2rem 0 0;
+  margin: 1.75rem 0 0;
   color: var(--text-secondary);
   font-size: clamp(1rem, 1.5vw, 1.16rem);
   line-height: 1.7;
 }
 
 .hero-actions {
-  margin-top: 2rem;
+  margin-top: 1.75rem;
 }
 
 .primary-link,
@@ -274,10 +274,10 @@ header {
 }
 
 .section-title {
-  margin: 0 0 3rem;
+  margin: 0 0 clamp(2.25rem, 5vw, 3rem);
   color: var(--text-primary);
   font-family: var(--font-editorial);
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-size: var(--type-section);
   font-weight: 400;
   letter-spacing: -0.045em;
   line-height: 1;
@@ -285,14 +285,14 @@ header {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
 .project-card {
   position: relative;
   display: flex;
-  min-height: 430px;
+  min-height: 410px;
   flex-direction: column;
   gap: 2rem;
   justify-content: space-between;
@@ -337,7 +337,7 @@ header {
 }
 
 .project-card--featured {
-  min-height: 390px;
+  min-height: 370px;
   grid-column: 1 / -1;
   background:
     linear-gradient(180deg, rgb(255 255 255 / 3%), transparent 32%),
@@ -354,7 +354,7 @@ header {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  color: var(--accent);
+  color: var(--accent-strong);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.13em;
@@ -362,7 +362,7 @@ header {
 }
 
 .project-card__topline span:last-child {
-  color: var(--text-secondary);
+  color: var(--text-subtle);
   text-align: right;
 }
 
@@ -370,7 +370,7 @@ header {
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-editorial);
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: var(--type-card-title);
   font-weight: 400;
   letter-spacing: -0.035em;
   line-height: 1.05;
@@ -404,7 +404,7 @@ header {
   padding: 0.38rem 0.65rem;
   border: 1px solid var(--border);
   border-radius: 0.375rem;
-  color: var(--text-secondary);
+  color: var(--text-subtle);
   background: var(--background);
   font-size: 0.68rem;
   letter-spacing: 0.04em;
@@ -582,7 +582,7 @@ header {
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-editorial);
-  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
   font-weight: 400;
   letter-spacing: -0.05em;
   line-height: 0.98;
@@ -804,7 +804,7 @@ header {
 .architecture-flow__number {
   display: block;
   margin-bottom: 2.3rem;
-  color: var(--accent);
+  color: var(--text-subtle);
   font-family: var(--font-sans);
   font-size: 0.65rem;
   font-weight: 700;
@@ -856,14 +856,14 @@ header {
 .about-copy p:first-child {
   color: var(--text-primary);
   font-family: var(--font-editorial);
-  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
   letter-spacing: -0.025em;
   line-height: 1.35;
 }
 
 .technical-profile h3 {
   margin: 0 0 1.5rem;
-  color: var(--text-primary);
+  color: var(--text-subtle);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -884,7 +884,7 @@ header {
 
 .skill-group h4 {
   margin: 0;
-  color: var(--accent);
+  color: var(--text-subtle);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -924,7 +924,7 @@ header {
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-editorial);
-  font-size: clamp(2.3rem, 4vw, 3.6rem);
+  font-size: clamp(2.3rem, 3.8vw, 3.2rem);
   font-weight: 400;
   letter-spacing: -0.045em;
   line-height: 1;
@@ -946,7 +946,7 @@ header {
 
 .footer-social h3 {
   margin: 0 0 1.5rem;
-  color: var(--accent);
+  color: var(--text-subtle);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -1044,6 +1044,28 @@ header {
   }
 }
 
+@media (max-width: 1100px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (pointer: coarse) {
+  .wordmark,
+  .nav-link,
+  .project-links a,
+  .project-disclosure,
+  .private-project-note a,
+  .footer-links a,
+  .footer-meta a {
+    min-height: 44px;
+  }
+}
+
 @media (max-width: 1023px) {
   .hero-grid {
     min-height: auto;
@@ -1069,7 +1091,8 @@ header {
     grid-template-columns: 1fr;
   }
 
-  .project-card--featured {
+  .project-card--featured,
+  .project-card:last-child {
     grid-column: auto;
   }
 
