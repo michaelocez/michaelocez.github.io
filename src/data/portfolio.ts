@@ -217,6 +217,68 @@ export const projects: Project[] = [
         href: 'https://github.com/michaelocez/cart-filler-game',
       },
     ],
+    details: {
+      summary:
+        'Built collaboratively as a JavaFX desktop game in which players configure a tower loadout, manage cash and inventory, and defend a route across configurable waves. The project separates FXML views, controllers, domain models, and services, with Gradle builds and JUnit tests supporting repeatable development.',
+      gallery: [
+        {
+          type: 'image',
+          src: '/projects/cart-filler-game/1.png',
+          alt: 'Cart Filler tower-selection screen showing four available towers, three selected towers, and the Wizard tower statistics.',
+          caption:
+            'Pre-game loadout selection with distinct tower costs and combat statistics.',
+        },
+        {
+          type: 'image',
+          src: '/projects/cart-filler-game/2.png',
+          alt: 'Cart Filler gameplay at wave five of five with four towers positioned around a route and two resource carts moving between them.',
+          caption:
+            'Wave-based gameplay combines tower placement, resource collection, and score progression.',
+        },
+        {
+          type: 'image',
+          src: '/projects/cart-filler-game/3.png',
+          alt: 'Cart Filler shop and inventory showing available towers, an upgrade selected for purchase, placed and reserve towers, and stored items.',
+          caption:
+            'The shop and bag connect purchasing decisions with placed, reserve, and upgrade inventory.',
+        },
+        {
+          type: 'image',
+          src: '/projects/cart-filler-game/4.png',
+          alt: 'Cart Filler upgrade-selection screen offering increased tower damage, faster attacks, or additional cash.',
+          caption:
+            'Between-wave upgrades let the player shape damage, attack speed, or cash generation.',
+        },
+      ],
+      architecture: {
+        kicker: 'Technical overview',
+        title: 'Application structure',
+        caption:
+          'The desktop application separates its interface, interaction logic, game state, and supporting services while retaining a reproducible build and test workflow.',
+        steps: [
+          {
+            label: 'JavaFX views',
+            detail:
+              'FXML defines the menu, settings, tower selection, gameplay, shop, upgrade, and result states',
+          },
+          {
+            label: 'Controllers',
+            detail:
+              'Main, settings, and map controllers respond to player input and coordinate each scene',
+          },
+          {
+            label: 'Domain models',
+            detail:
+              'GameEnvironment, Tower, Cart, and Health encapsulate progression and game rules',
+          },
+          {
+            label: 'Build & tests',
+            detail:
+              'Gradle packages the application while JUnit supports automated verification',
+          },
+        ],
+      },
+    },
   },
 ]
 
