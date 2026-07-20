@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import type { ProjectArchitecture as ProjectArchitectureData } from '../types/portfolio'
 
 type ProjectArchitectureProps = {
@@ -5,12 +6,16 @@ type ProjectArchitectureProps = {
 }
 
 function ProjectArchitecture({ architecture }: ProjectArchitectureProps) {
+  const titleId = useId()
+
   return (
-    <section className="project-architecture" aria-labelledby="architecture-title">
+    <section className="project-architecture" aria-labelledby={titleId}>
       <div className="project-architecture__header">
         <div>
-          <p className="section-kicker">Technical overview</p>
-          <h3 id="architecture-title">System architecture</h3>
+          <p className="section-kicker">
+            {architecture.kicker ?? 'Technical overview'}
+          </p>
+          <h3 id={titleId}>{architecture.title ?? 'System architecture'}</h3>
         </div>
         <p>{architecture.caption}</p>
       </div>
