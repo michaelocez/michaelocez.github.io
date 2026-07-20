@@ -2,6 +2,7 @@ import { useEffect, useId, useRef } from 'react'
 import type { Project } from '../types/portfolio'
 import ProjectArchitecture from './ProjectArchitecture'
 import ProjectGalleryCarousel from './ProjectGalleryCarousel'
+import ProjectResults from './ProjectResults'
 
 type ProjectDetailsModalProps = {
   project: Project | null
@@ -90,6 +91,10 @@ function ProjectDetailsModal({ project, onClose }: ProjectDetailsModalProps) {
           items={project.details.gallery}
           projectTitle={project.title}
         />
+
+        {project.details.results && (
+          <ProjectResults results={project.details.results} />
+        )}
 
         <ProjectArchitecture architecture={project.details.architecture} />
       </article>

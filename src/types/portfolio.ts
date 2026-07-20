@@ -17,13 +17,26 @@ export type ProjectArchitectureStep = {
 }
 
 export type ProjectArchitecture = {
+  kicker?: string
+  title?: string
   caption: string
   steps: ProjectArchitectureStep[]
+}
+
+export type ProjectResultMetric = {
+  label: string
+  value: string
+}
+
+export type ProjectResults = {
+  caption: string
+  metrics: ProjectResultMetric[]
 }
 
 export type ProjectDetails = {
   summary: string
   gallery: ProjectGalleryImage[]
+  results?: ProjectResults
   architecture: ProjectArchitecture
 }
 

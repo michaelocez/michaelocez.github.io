@@ -116,14 +116,92 @@ export const projects: Project[] = [
     title: 'Car Colour Analysis',
     description:
       'A real-world study comparing vehicle colour observations from university car parks with New Zealand fleet-registration proportions.',
-    highlight: 'Applied chi-square testing and communicated the findings in R.',
-    technologies: ['R', 'Chi-square testing', 'Data collection', 'Reporting'],
+    highlight:
+      'Cleaned and tested the data in R, then communicated where the distributions differed.',
+    technologies: ['R', 'tidyverse', 'ggplot2', 'Chi-square testing'],
     links: [
       {
         label: 'Repository',
         href: 'https://github.com/michaelocez/STAT312-Car-Colours-Project',
       },
     ],
+    details: {
+      summary:
+        'An independently written statistical report comparing 959 observed campus vehicles with national registration data. I prepared the datasets in R, checked the test assumptions, applied Pearson\'s chi-square test, and used standardised residuals to interpret the category-level differences.',
+      gallery: [
+        {
+          type: 'image',
+          src: '/projects/car-colour-analysis/1.png',
+          alt: 'Grouped bar chart comparing the percentage distribution of twelve vehicle colours in the university sample and New Zealand registration data.',
+          caption:
+            'Final 12-category comparison between the campus sample and national fleet.',
+        },
+        {
+          type: 'image',
+          src: '/projects/car-colour-analysis/2.png',
+          alt: 'Horizontal bar chart of standardised residuals by vehicle colour with reference lines at negative two and positive two.',
+          caption:
+            'Standardised residuals identify the colours driving the overall difference.',
+        },
+        {
+          type: 'image',
+          src: '/projects/car-colour-analysis/3.png',
+          alt: 'Bar chart showing expected counts below twenty for rare vehicle-colour categories before categories were merged.',
+          caption:
+            'Expected-count checks prompted the rare-colour categories to be combined.',
+        },
+      ],
+      results: {
+        caption:
+          'The evidence indicated that the campus and national colour distributions differed. Silver and White appeared more often than expected, while Grey, Gold, and Green appeared less often; interpretation remains mindful of sampling coverage and the visual boundary between Grey and Silver.',
+        metrics: [
+          {
+            label: 'Campus sample',
+            value: '959 vehicles',
+          },
+          {
+            label: 'National reference',
+            value: '3.65 million',
+          },
+          {
+            label: 'Test statistic',
+            value: 'χ²(11) = 87.563',
+          },
+          {
+            label: 'Evidence',
+            value: 'p < 0.001',
+          },
+        ],
+      },
+      architecture: {
+        kicker: 'Analysis workflow',
+        title: 'Statistical method',
+        caption:
+          'The analysis moved from direct observations to a reproducible comparison, with assumption checks determining the final categories used by the test.',
+        steps: [
+          {
+            label: 'Collect',
+            detail:
+              'Record 959 vehicle colours across ten campus car parks and two observation sessions',
+          },
+          {
+            label: 'Prepare in R',
+            detail:
+              'Clean category labels, aggregate observations, and join the national reference data',
+          },
+          {
+            label: 'Validate',
+            detail:
+              'Inspect expected counts and merge rare categories before conducting the test',
+          },
+          {
+            label: 'Test & interpret',
+            detail:
+              'Apply Pearson\'s chi-square test and use standardised residuals to explain the result',
+          },
+        ],
+      },
+    },
   },
   {
     number: '04',

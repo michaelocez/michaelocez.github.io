@@ -79,7 +79,11 @@ function ProjectsSection() {
         </article>
 
         {projects.slice(1).map((project) => (
-          <ProjectCard key={project.title} project={project} />
+          <ProjectCard
+            key={project.title}
+            project={project}
+            onOpenProject={setSelectedProject}
+          />
         ))}
       </div>
 

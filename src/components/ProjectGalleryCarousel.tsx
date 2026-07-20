@@ -63,9 +63,6 @@ function ProjectGalleryCarousel({
         </button>
 
         <p className="project-gallery__caption" aria-live="polite">
-          <span>
-            {activeIndex + 1} / {items.length}
-          </span>
           {activeItem.caption}
         </p>
 
@@ -74,18 +71,24 @@ function ProjectGalleryCarousel({
         </button>
       </div>
 
-      <ol className="project-gallery__pagination" aria-label="Choose a slide">
-        {items.map((item, index) => (
-          <li key={item.caption}>
-            <button
-              type="button"
-              aria-label={`Show slide ${index + 1}: ${item.caption}`}
-              aria-current={index === activeIndex ? 'true' : undefined}
-              onClick={() => setActiveIndex(index)}
-            />
-          </li>
-        ))}
-      </ol>
+      <div className="project-gallery__pagination-group">
+        <ol className="project-gallery__pagination" aria-label="Choose a slide">
+          {items.map((item, index) => (
+            <li key={item.caption}>
+              <button
+                type="button"
+                aria-label={`Show slide ${index + 1}: ${item.caption}`}
+                aria-current={index === activeIndex ? 'true' : undefined}
+                onClick={() => setActiveIndex(index)}
+              />
+            </li>
+          ))}
+        </ol>
+
+        <p className="project-gallery__counter" aria-hidden="true">
+          {activeIndex + 1} / {items.length}
+        </p>
+      </div>
     </section>
   )
 }
