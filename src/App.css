@@ -2,9 +2,7 @@
   --pointer-x: 50vw;
   --pointer-y: 40vh;
   position: relative;
-  background:
-    radial-gradient(circle at 78% 18%, rgb(65 74 145 / 12%), transparent 28rem),
-    var(--background);
+  background: var(--background);
 }
 
 .sr-only {
@@ -54,7 +52,7 @@
   height: var(--star-size);
   border-radius: 50%;
   background: var(--accent-strong);
-  box-shadow: 0 0 8px rgb(174 184 255 / 55%);
+  box-shadow: 0 0 8px rgb(130 143 255 / 42%);
   opacity: 0.12;
   animation: twinkle var(--star-duration) ease-in-out var(--star-delay) infinite;
 }
@@ -68,7 +66,7 @@
   top: var(--pointer-y);
   left: var(--pointer-x);
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(111 126 238 / 10%), transparent 68%);
+  background: radial-gradient(circle, rgb(94 106 210 / 7%), transparent 68%);
   transform: translate(-50%, -50%);
 }
 
@@ -89,7 +87,7 @@ header {
   left: 1rem;
   z-index: 10;
   padding: 0.65rem 0.9rem;
-  color: var(--background);
+  color: var(--on-accent);
   background: var(--accent-strong);
   font-size: 0.78rem;
   font-weight: 700;
@@ -111,20 +109,20 @@ header {
 .footer-links a,
 .footer-meta a {
   display: inline-flex;
-  min-height: 24px;
+  min-height: 40px;
   align-items: center;
 }
 
 .wordmark {
   color: var(--text-primary);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-decoration: none;
 }
 
 .nav-link {
-  color: var(--text-secondary);
+  color: var(--text-subtle);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
   text-decoration: none;
@@ -158,12 +156,12 @@ header {
 }
 
 .hero-grid {
-  min-height: calc(100svh - 81px);
+  min-height: calc(100svh - 65px);
   align-content: center;
 }
 
 .meta-label {
-  color: var(--accent);
+  color: var(--text-subtle);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -175,7 +173,7 @@ header {
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-editorial);
-  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-size: var(--type-display);
   font-weight: 400;
   letter-spacing: -0.055em;
   line-height: 1.02;
@@ -186,14 +184,14 @@ header {
 }
 
 .hero-copy {
-  margin: 2rem 0 0;
+  margin: 1.75rem 0 0;
   color: var(--text-secondary);
   font-size: clamp(1rem, 1.5vw, 1.16rem);
   line-height: 1.7;
 }
 
 .hero-actions {
-  margin-top: 2rem;
+  margin-top: 1.75rem;
 }
 
 .primary-link,
@@ -204,6 +202,7 @@ header {
   justify-content: center;
   padding: 0.75rem 1.15rem;
   border: 1px solid var(--border);
+  border-radius: var(--radius-control);
   font-size: 0.82rem;
   font-weight: 650;
   letter-spacing: 0.02em;
@@ -216,20 +215,20 @@ header {
 }
 
 .primary-link {
-  color: var(--background);
+  color: var(--on-accent);
   background: var(--accent);
   border-color: var(--accent);
 }
 
 .primary-link:hover {
-  background: var(--accent-strong);
-  border-color: var(--accent-strong);
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
   transform: translateY(-2px);
 }
 
 .secondary-link {
   color: var(--text-primary);
-  background: rgb(16 22 36 / 64%);
+  background: var(--surface);
 }
 
 .secondary-link:hover {
@@ -265,7 +264,7 @@ header {
 
 .section-kicker {
   margin: 0 0 0.9rem;
-  color: var(--accent);
+  color: var(--accent-strong);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -273,10 +272,10 @@ header {
 }
 
 .section-title {
-  margin: 0 0 3rem;
+  margin: 0 0 clamp(2.25rem, 5vw, 3rem);
   color: var(--text-primary);
   font-family: var(--font-editorial);
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-size: var(--type-section);
   font-weight: 400;
   letter-spacing: -0.045em;
   line-height: 1;
@@ -284,20 +283,24 @@ header {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
 .project-card {
   position: relative;
   display: flex;
-  min-height: 430px;
+  min-height: 410px;
   flex-direction: column;
   gap: 2rem;
   justify-content: space-between;
   padding: clamp(1.5rem, 4vw, 2.5rem);
   border: 1px solid var(--border);
-  background-color: rgb(16 22 36 / 76%);
+  border-radius: var(--radius-card);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 2%), transparent 35%),
+    var(--surface);
+  box-shadow: inset 0 1px rgb(255 255 255 / 4%);
   transition:
     border-color 220ms ease,
     background-color 220ms ease,
@@ -324,36 +327,32 @@ header {
 }
 
 .project-card:hover {
-  border-color: rgb(145 160 255 / 55%);
-  background-color: rgb(18 25 42 / 90%);
-  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 3%), transparent 35%),
+    var(--surface-raised);
+  transform: translateY(-2px);
 }
 
 .project-card--featured {
-  min-height: 390px;
+  min-height: 370px;
   grid-column: 1 / -1;
-  background-color: rgb(16 22 36 / 78%);
-  background-image: linear-gradient(
-    115deg,
-    rgb(145 160 255 / 9%),
-    transparent 55%
-  );
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 3%), transparent 32%),
+    var(--surface-raised);
 }
 
 .project-card--private {
-  background-color: rgb(14 19 31 / 82%);
-  background-image: linear-gradient(
-    140deg,
-    rgb(145 160 255 / 8%),
-    transparent 65%
-  );
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 2%), transparent 32%),
+    var(--surface);
 }
 
 .project-card__topline {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  color: var(--accent);
+  color: var(--accent-strong);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.13em;
@@ -361,7 +360,7 @@ header {
 }
 
 .project-card__topline span:last-child {
-  color: var(--text-secondary);
+  color: var(--text-subtle);
   text-align: right;
 }
 
@@ -369,7 +368,7 @@ header {
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-editorial);
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: var(--type-card-title);
   font-weight: 400;
   letter-spacing: -0.035em;
   line-height: 1.05;
@@ -402,8 +401,9 @@ header {
 .project-tags li {
   padding: 0.38rem 0.65rem;
   border: 1px solid var(--border);
-  color: var(--text-secondary);
-  background: rgb(9 12 19 / 60%);
+  border-radius: 0.375rem;
+  color: var(--text-subtle);
+  background: var(--background);
   font-size: 0.68rem;
   letter-spacing: 0.04em;
 }
@@ -505,18 +505,18 @@ header {
   margin: auto;
   padding: 0;
   overflow: hidden;
-  border: 1px solid rgb(145 160 255 / 58%);
-  border-radius: 1.25rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-panel);
   color: var(--text-primary);
-  background: rgb(9 12 19 / 98%);
+  background: var(--surface);
   box-shadow:
-    0 0 0 1px rgb(145 160 255 / 10%),
-    0 0 3.5rem rgb(111 126 238 / 22%),
+    0 0 0 1px rgb(255 255 255 / 3%),
+    0 0 3rem rgb(94 106 210 / 8%),
     0 2rem 7rem rgb(0 0 0 / 72%);
 }
 
 .project-details-dialog::backdrop {
-  background: rgb(3 5 9 / 80%);
+  background: rgb(0 0 0 / 82%);
   backdrop-filter: blur(8px);
 }
 
@@ -528,10 +528,8 @@ header {
   scrollbar-width: none;
   -ms-overflow-style: none;
   border-radius: inherit;
-  background:
-    radial-gradient(circle at 82% 10%, rgb(145 160 255 / 11%), transparent 27rem),
-    var(--background);
-  box-shadow: inset 0 0 5rem rgb(111 126 238 / 5%);
+  background: var(--background);
+  box-shadow: inset 0 1px rgb(255 255 255 / 5%);
 }
 
 .project-details-dialog__surface::-webkit-scrollbar {
@@ -548,10 +546,10 @@ header {
   margin: 1rem 1rem -3.65rem auto;
   padding: 0;
   border: 1px solid var(--border);
-  border-radius: 0.55rem;
+  border-radius: var(--radius-control);
   place-items: center;
   color: var(--text-primary);
-  background: rgb(16 22 36 / 96%);
+  background: var(--surface-raised);
   cursor: pointer;
   transition:
     border-color 180ms ease,
@@ -568,8 +566,8 @@ header {
 }
 
 .project-details-dialog__close:hover {
-  border-color: var(--accent);
-  background: var(--surface);
+  border-color: var(--border-strong);
+  background: var(--surface-hover);
 }
 
 .project-details-dialog__header {
@@ -582,7 +580,7 @@ header {
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-editorial);
-  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
   font-weight: 400;
   letter-spacing: -0.05em;
   line-height: 0.98;
@@ -626,10 +624,10 @@ header {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border: 1px solid var(--border);
+  border-radius: var(--radius-panel);
   place-items: center;
-  background:
-    linear-gradient(135deg, rgb(145 160 255 / 7%), transparent 45%),
-    #070a11;
+  background: var(--surface);
+  box-shadow: inset 0 1px rgb(255 255 255 / 4%);
 }
 
 .project-gallery__image {
@@ -661,6 +659,7 @@ header {
 .project-gallery__toolbar button {
   padding: 0.65rem 0.8rem;
   border: 1px solid var(--border);
+  border-radius: var(--radius-control);
   color: var(--text-primary);
   background: transparent;
   cursor: pointer;
@@ -675,7 +674,7 @@ header {
 }
 
 .project-gallery__toolbar button:hover {
-  border-color: var(--accent);
+  border-color: var(--border-strong);
   color: var(--accent-strong);
   background: var(--accent-soft);
 }
@@ -692,7 +691,7 @@ header {
 }
 
 .project-gallery__caption span {
-  color: var(--accent);
+  color: var(--accent-strong);
   font-weight: 700;
   white-space: nowrap;
 }
@@ -735,9 +734,7 @@ header {
 .project-architecture {
   padding: clamp(2.75rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem);
   border-top: 1px solid var(--border);
-  background:
-    linear-gradient(145deg, rgb(145 160 255 / 7%), transparent 48%),
-    rgb(7 10 17 / 72%);
+  background: var(--surface);
 }
 
 .project-architecture__header {
@@ -782,11 +779,11 @@ header {
   min-height: 190px;
   padding: 1.4rem;
   border: 1px solid var(--border);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-card);
   background:
-    linear-gradient(145deg, rgb(145 160 255 / 8%), transparent 58%),
-    rgb(16 22 36 / 82%);
-  box-shadow: 0 1rem 2.5rem rgb(0 0 0 / 18%);
+    linear-gradient(180deg, rgb(255 255 255 / 2%), transparent 45%),
+    var(--surface-raised);
+  box-shadow: inset 0 1px rgb(255 255 255 / 4%);
 }
 
 .architecture-flow li:not(:last-child)::after {
@@ -805,7 +802,7 @@ header {
 .architecture-flow__number {
   display: block;
   margin-bottom: 2.3rem;
-  color: var(--accent);
+  color: var(--text-subtle);
   font-family: var(--font-sans);
   font-size: 0.65rem;
   font-weight: 700;
@@ -857,14 +854,14 @@ header {
 .about-copy p:first-child {
   color: var(--text-primary);
   font-family: var(--font-editorial);
-  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
   letter-spacing: -0.025em;
   line-height: 1.35;
 }
 
 .technical-profile h3 {
   margin: 0 0 1.5rem;
-  color: var(--text-primary);
+  color: var(--text-subtle);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -885,7 +882,7 @@ header {
 
 .skill-group h4 {
   margin: 0;
-  color: var(--accent);
+  color: var(--text-subtle);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -913,9 +910,7 @@ header {
 
 .site-footer {
   border-top: 1px solid var(--border);
-  background:
-    linear-gradient(115deg, rgb(145 160 255 / 7%), transparent 45%),
-    rgb(7 10 16 / 72%);
+  background: var(--background);
 }
 
 .footer-main {
@@ -927,7 +922,7 @@ header {
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-editorial);
-  font-size: clamp(2.3rem, 4vw, 3.6rem);
+  font-size: clamp(2.3rem, 3.8vw, 3.2rem);
   font-weight: 400;
   letter-spacing: -0.045em;
   line-height: 1;
@@ -949,7 +944,7 @@ header {
 
 .footer-social h3 {
   margin: 0 0 1.5rem;
-  color: var(--accent);
+  color: var(--text-subtle);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -1047,6 +1042,28 @@ header {
   }
 }
 
+@media (max-width: 1100px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (pointer: coarse) {
+  .wordmark,
+  .nav-link,
+  .project-links a,
+  .project-disclosure,
+  .private-project-note a,
+  .footer-links a,
+  .footer-meta a {
+    min-height: 44px;
+  }
+}
+
 @media (max-width: 1023px) {
   .hero-grid {
     min-height: auto;
@@ -1072,7 +1089,8 @@ header {
     grid-template-columns: 1fr;
   }
 
-  .project-card--featured {
+  .project-card--featured,
+  .project-card:last-child {
     grid-column: auto;
   }
 
@@ -1094,7 +1112,7 @@ header {
   .project-details-dialog {
     width: calc(100% - 1.5rem);
     max-height: calc(100dvh - 2rem);
-    border-radius: 0.9rem;
+    border-radius: var(--radius-panel);
   }
 
   .project-details-dialog__surface {
