@@ -15,6 +15,107 @@ export const externalLinks: ExternalLink[] = [
 export const projects: Project[] = [
   {
     number: '01',
+    category: 'Data engineering',
+    title: 'NZ Vehicle Market Tracker',
+    description:
+      'A reproducible data product that transforms NZTA fleet data into validated monthly aggregates and an interactive market dashboard.',
+    highlight:
+      'Streams 5.9 million source rows and publishes refreshed data through an automated CI/CD pipeline.',
+    technologies: ['Python', 'React', 'TypeScript', 'Data pipelines', 'GitHub Actions'],
+    links: [
+      {
+        label: 'Live dashboard',
+        href: 'https://michaelocez.github.io/nz-vehicle-market-tracker/',
+      },
+    ],
+    featured: true,
+    details: {
+      summary:
+        'A production-style data project that streams NZTA\'s current-fleet release, applies documented analytical boundaries, generates compact monthly datasets, and publishes a responsive dashboard. The private source repository includes automated validation, scheduled refreshes, snapshot retention, and GitHub Pages deployment.',
+      gallery: [
+        {
+          type: 'image',
+          src: '/projects/nz-vehicle-market-tracker/1.png',
+          alt: 'NZ Vehicle Market Tracker introduction showing the June 2026 passenger-vehicle total and the split between NZ-new cars and used imports.',
+          caption:
+            'The published dashboard introduces the latest market snapshot and its NZ-new versus used-import split.',
+        },
+        {
+          type: 'image',
+          src: '/projects/nz-vehicle-market-tracker/2.png',
+          alt: 'Annual grouped bar chart comparing NZ-new passenger vehicles with used imports from 2017 through June 2026.',
+          caption:
+            'A selectable time range compares how the two main entry channels have changed over time.',
+        },
+        {
+          type: 'image',
+          src: '/projects/nz-vehicle-market-tracker/3.png',
+          alt: 'Dashboard panels summarising June 2026 powertrains and the five leading vehicle makes entering the New Zealand fleet.',
+          caption:
+            'Latest-month analysis connects powertrain composition with leading makes and models.',
+        },
+      ],
+      results: {
+        kicker: 'Delivery evidence',
+        title: 'Beyond the dashboard',
+        caption:
+          'The interface is backed by a documented data contract, reconciliation checks, automated tests, and a repeatable delivery process rather than manually prepared chart data.',
+        metrics: [
+          {
+            label: 'Source snapshot',
+            value: '5.9m rows',
+          },
+          {
+            label: 'Scoped records',
+            value: '3.1m vehicles',
+          },
+          {
+            label: 'Brand mapping',
+            value: '99.95%',
+          },
+          {
+            label: 'Automated checks',
+            value: '22 tests',
+          },
+        ],
+      },
+      developmentNote: {
+        title: 'Built in one focused day with Codex',
+        text:
+          'I used Codex as an AI development collaborator while retaining ownership of the product scope, analytical definitions, technical decisions, review, testing, and deployment. The collaboration accelerated research and implementation without replacing validation or judgement.',
+      },
+      architecture: {
+        kicker: 'Automated data product',
+        title: 'Delivery pipeline',
+        caption:
+          'The system keeps the large raw release outside the repository and publishes only reviewed, frontend-ready aggregates. GitHub Actions repeats the same validated process for future NZTA snapshots.',
+        steps: [
+          {
+            label: 'NZTA snapshot',
+            detail:
+              'Discover and download the official all-vehicle-years ZIP into temporary storage',
+          },
+          {
+            label: 'Python pipeline',
+            detail:
+              'Stream selected fields, enforce the passenger-vehicle scope, and validate data quality',
+          },
+          {
+            label: 'Versioned aggregates',
+            detail:
+              'Write eight compact JSON dimensions with record counts, SHA-256 checksums, and monthly archives',
+          },
+          {
+            label: 'Dashboard delivery',
+            detail:
+              'Test the React interface, refresh data monthly, and deploy the validated build to GitHub Pages',
+          },
+        ],
+      },
+    },
+  },
+  {
+    number: '02',
     category: 'Full-stack development',
     title: 'Game Review Platform',
     description:
@@ -31,7 +132,6 @@ export const projects: Project[] = [
         href: 'https://github.com/michaelocez/game-review-api',
       },
     ],
-    featured: true,
     details: {
       summary:
         'A full-stack coursework project for browsing games, publishing reviews, and managing personal wishlist and ownership states. The React client and TypeScript REST API are maintained as separate repositories.',
@@ -111,7 +211,7 @@ export const projects: Project[] = [
     },
   },
   {
-    number: '03',
+    number: '04',
     category: 'Statistical analysis',
     title: 'Car Colour Analysis',
     description:
@@ -204,7 +304,7 @@ export const projects: Project[] = [
     },
   },
   {
-    number: '04',
+    number: '05',
     category: 'Game development',
     title: 'Cart Filler Game',
     description:

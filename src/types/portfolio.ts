@@ -29,14 +29,22 @@ export type ProjectResultMetric = {
 }
 
 export type ProjectResults = {
+  kicker?: string
+  title?: string
   caption: string
   metrics: ProjectResultMetric[]
+}
+
+export type ProjectDevelopmentNote = {
+  title: string
+  text: string
 }
 
 export type ProjectDetails = {
   summary: string
   gallery: ProjectGalleryImage[]
   results?: ProjectResults
+  developmentNote?: ProjectDevelopmentNote
   architecture: ProjectArchitecture
 }
 

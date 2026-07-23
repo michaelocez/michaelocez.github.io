@@ -72,7 +72,7 @@ function ProjectDetailsModal({ project, onClose }: ProjectDetailsModalProps) {
 
           <div
             className="project-details-dialog__links"
-            aria-label="Project repositories"
+            aria-label="Project links"
           >
             {project.links.map((link) => (
               <a
@@ -94,6 +94,14 @@ function ProjectDetailsModal({ project, onClose }: ProjectDetailsModalProps) {
 
         {project.details.results && (
           <ProjectResults results={project.details.results} />
+        )}
+
+        {project.details.developmentNote && (
+          <aside className="project-development-note">
+            <p className="section-kicker">Development workflow</p>
+            <h3>{project.details.developmentNote.title}</h3>
+            <p>{project.details.developmentNote.text}</p>
+          </aside>
         )}
 
         <ProjectArchitecture architecture={project.details.architecture} />
