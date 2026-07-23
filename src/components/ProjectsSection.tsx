@@ -22,9 +22,14 @@ function ProjectsSection() {
           onOpenProject={setSelectedProject}
         />
 
+        <ProjectCard
+          project={projects[1]}
+          onOpenProject={setSelectedProject}
+        />
+
         <article className="project-card project-card--private">
           <div className="project-card__topline">
-            <span>02</span>
+            <span>03</span>
             <span>Game development</span>
           </div>
 
@@ -78,7 +83,7 @@ function ProjectsSection() {
           </div>
         </article>
 
-        {projects.slice(1).map((project) => (
+        {projects.slice(2).map((project) => (
           <ProjectCard
             key={project.title}
             project={project}

@@ -12,8 +12,10 @@ function ProjectResults({ results }: ProjectResultsProps) {
     <section className="project-results" aria-labelledby={titleId}>
       <div className="project-results__header">
         <div>
-          <p className="section-kicker">Analysis outcome</p>
-          <h3 id={titleId}>Key results</h3>
+          <p className="section-kicker">
+            {results.kicker ?? 'Analysis outcome'}
+          </p>
+          <h3 id={titleId}>{results.title ?? 'Key results'}</h3>
         </div>
         <p>{results.caption}</p>
       </div>
