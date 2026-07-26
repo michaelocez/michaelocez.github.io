@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { KeyboardEvent } from 'react'
 import type { ProjectGalleryImage } from '../types/portfolio'
+import { preloadImage } from '../utils/preloadImage'
 
 type ProjectGalleryCarouselProps = {
   items: ProjectGalleryImage[]
@@ -12,7 +13,6 @@ function ProjectGalleryCarousel({
   projectTitle,
 }: ProjectGalleryCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0)
-  const preloadedImages = useRef(new Map<string, HTMLImageElement>())
   const activeItem = items[activeIndex]
 
   useEffect(() => {
@@ -26,17 +26,7 @@ function ProjectGalleryCarousel({
     ])
 
     adjacentIndexes.forEach((index) => {
-      const source = items[index].src
-
-      if (preloadedImages.current.has(source)) {
-        return
-      }
-
-      const image = new Image()
-      image.decoding = 'async'
-      image.src = source
-      void image.decode().catch(() => undefined)
-      preloadedImages.current.set(source, image)
+      preloadImage(items[index].src)
     })
   }, [activeIndex, items])
 
