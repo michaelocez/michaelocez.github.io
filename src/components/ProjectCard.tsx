@@ -1,4 +1,6 @@
+import { useEffect, useRef } from 'react'
 import type { Project } from '../types/portfolio'
+import { preloadImage } from '../utils/preloadImage'
 
 type ProjectCardProps = {
   project: Project
@@ -6,13 +8,51 @@ type ProjectCardProps = {
 }
 
 function ProjectCard({ project, onOpenProject }: ProjectCardProps) {
+  const cardRef = useRef<HTMLElement>(null)
   const canOpenProject = Boolean(project.details && onOpenProject)
+  const coverImage = project.details?.gallery[0]?.src
+
+  useEffect(() => {
+    const card = cardRef.current
+
+    if (!canOpenProject || !coverImage || !card) {
+      return
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      preloadImage(coverImage)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          preloadImage(coverImage)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '600px 0px' },
+    )
+
+    observer.observe(card)
+    return () => observer.disconnect()
+  }, [canOpenProject, coverImage])
+
+  const prepareCoverImage = () => {
+    if (coverImage) {
+      preloadImage(coverImage)
+    }
+  }
 
   return (
     <article
+      ref={cardRef}
       className={`project-card${project.featured ? ' project-card--featured' : ''}${
         canOpenProject ? ' project-card--interactive' : ''
       }`}
+      onFocus={prepareCoverImage}
+      onPointerDown={prepareCoverImage}
+      onPointerEnter={prepareCoverImage}
     >
       {canOpenProject && (
         <button
