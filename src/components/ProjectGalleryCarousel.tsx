@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { KeyboardEvent } from 'react'
 import type { ProjectGalleryImage } from '../types/portfolio'
 
@@ -12,7 +12,33 @@ function ProjectGalleryCarousel({
   projectTitle,
 }: ProjectGalleryCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0)
+  const preloadedImages = useRef(new Map<string, HTMLImageElement>())
   const activeItem = items[activeIndex]
+
+  useEffect(() => {
+    if (items.length < 2) {
+      return
+    }
+
+    const adjacentIndexes = new Set([
+      (activeIndex - 1 + items.length) % items.length,
+      (activeIndex + 1) % items.length,
+    ])
+
+    adjacentIndexes.forEach((index) => {
+      const source = items[index].src
+
+      if (preloadedImages.current.has(source)) {
+        return
+      }
+
+      const image = new Image()
+      image.decoding = 'async'
+      image.src = source
+      void image.decode().catch(() => undefined)
+      preloadedImages.current.set(source, image)
+    })
+  }, [activeIndex, items])
 
   const showPrevious = () => {
     setActiveIndex((currentIndex) =>
@@ -54,6 +80,8 @@ function ProjectGalleryCarousel({
           }`}
           src={activeItem.src}
           alt={activeItem.alt}
+          decoding="async"
+          fetchPriority="high"
         />
       </div>
 
