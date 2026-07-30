@@ -18,41 +18,52 @@ export const projects: Project[] = [
     category: 'Data engineering',
     title: 'NZ Vehicle Market Tracker',
     description:
-      'A reproducible data product that transforms NZTA fleet data into validated monthly aggregates and an interactive market dashboard.',
+      'A reproducible data product that transforms NZTA fleet data into validated aggregates and an interactive market dashboard.',
     highlight:
-      'Streams 5.9 million source rows and publishes refreshed data through an automated CI/CD pipeline.',
+      'Streams 5.9 million source rows, supports current-fleet exploration, and publishes through an automated CI/CD pipeline.',
     technologies: ['Python', 'React', 'TypeScript', 'Data pipelines', 'GitHub Actions'],
     links: [
       {
         label: 'Live dashboard',
         href: 'https://michaelocez.github.io/nz-vehicle-market-tracker/',
       },
+      {
+        label: 'Repository',
+        href: 'https://github.com/michaelocez/nz-vehicle-market-tracker',
+      },
     ],
     featured: true,
     details: {
       summary:
-        'A production-style data project that streams NZTA\'s current-fleet release, applies documented analytical boundaries, generates compact monthly datasets, and publishes a responsive dashboard. The private source repository includes automated validation, scheduled refreshes, snapshot retention, and GitHub Pages deployment.',
+        'A production-style data project that streams NZTA\'s current-fleet release, applies documented analytical boundaries, and publishes a responsive dashboard. Its public repository includes automated validation, weekly refresh checks, snapshot retention, current-fleet rankings, and an exact make-and-model explorer.',
       gallery: [
         {
           type: 'image',
           src: '/projects/nz-vehicle-market-tracker/1.png',
           alt: 'NZ Vehicle Market Tracker introduction showing the June 2026 passenger-vehicle total and the split between NZ-new cars and used imports.',
           caption:
-            'The published dashboard introduces the latest market snapshot and its NZ-new versus used-import split.',
+            'The dashboard opens with the latest market snapshot and its NZ-new versus used-import split.',
         },
         {
           type: 'image',
           src: '/projects/nz-vehicle-market-tracker/2.png',
-          alt: 'Annual grouped bar chart comparing NZ-new passenger vehicles with used imports from 2017 through June 2026.',
+          alt: 'NZ Vehicle Market Tracker vehicle analysis showing June 2026 powertrain composition, leading makes, and a toggle between latest entries and the current fleet.',
           caption:
-            'A selectable time range compares how the two main entry channels have changed over time.',
+            'Vehicle rankings can switch between the latest entries and the current scoped fleet.',
         },
         {
           type: 'image',
           src: '/projects/nz-vehicle-market-tracker/3.png',
-          alt: 'Dashboard panels summarising June 2026 powertrains and the five leading vehicle makes entering the New Zealand fleet.',
+          alt: 'Dashboard panels comparing NZ-new and used-import arrival channels within each powertrain and listing the leading models for June 2026.',
           caption:
-            'Latest-month analysis connects powertrain composition with leading makes and models.',
+            'Arrival-channel analysis shows how each major powertrain reaches the New Zealand fleet.',
+        },
+        {
+          type: 'image',
+          src: '/projects/nz-vehicle-market-tracker/4.png',
+          alt: 'Make and model explorer showing the current scoped fleet totals for Toyota, including NZ-new, used-import, and other vehicles.',
+          caption:
+            'The make-and-model explorer exposes exact current-fleet totals beyond the monthly top-five rankings.',
         },
       ],
       results: {
@@ -75,7 +86,7 @@ export const projects: Project[] = [
           },
           {
             label: 'Automated checks',
-            value: '22 tests',
+            value: '23 tests',
           },
         ],
       },
@@ -103,12 +114,12 @@ export const projects: Project[] = [
           {
             label: 'Versioned aggregates',
             detail:
-              'Write eight compact JSON dimensions with record counts, SHA-256 checksums, and monthly archives',
+              'Write ten compact JSON datasets with record counts, SHA-256 checksums, and monthly archives',
           },
           {
             label: 'Dashboard delivery',
             detail:
-              'Test the React interface, refresh data monthly, and deploy the validated build to GitHub Pages',
+              'Test the React interface, check for fresh source data weekly, and deploy the validated build to GitHub Pages',
           },
         ],
       },
