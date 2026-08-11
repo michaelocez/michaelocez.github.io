@@ -35,21 +35,28 @@ export const projects: Project[] = [
     featured: true,
     details: {
       summary:
-        'A production-style data project that streams NZTA\'s current-fleet release, applies documented analytical boundaries, and publishes a responsive dashboard. Its public repository includes automated validation, weekly refresh checks, snapshot retention, current-fleet rankings, and an exact make-and-model explorer.',
+        'A production-style data project that streams NZTA\'s current-fleet release, applies documented analytical boundaries, and publishes a responsive dashboard. Its public repository includes automated validation, weekly refresh checks, historical monthly exploration, filtered vehicle rankings, fleet-age analysis, and an exact make-and-model explorer.',
       gallery: [
         {
           type: 'image',
           src: '/projects/nz-vehicle-market-tracker/1.png',
-          alt: 'NZ Vehicle Market Tracker introduction showing the June 2026 passenger-vehicle total and the split between NZ-new cars and used imports.',
+          alt: 'NZ Vehicle Market Tracker introduction showing the July 2026 passenger-vehicle total and the split between NZ-new cars and used imports.',
           caption:
             'The dashboard opens with the latest market snapshot and its NZ-new versus used-import split.',
         },
         {
           type: 'image',
-          src: '/projects/nz-vehicle-market-tracker/2.png',
-          alt: 'NZ Vehicle Market Tracker vehicle analysis showing June 2026 powertrain composition, leading makes, and a toggle between latest entries and the current fleet.',
+          src: '/projects/nz-vehicle-market-tracker/5.png',
+          alt: 'Historical monthly detail controls showing December 2025 NZ-new and used-import counts and the used-import share.',
           caption:
-            'Vehicle rankings can switch between the latest entries and the current scoped fleet.',
+            'Year and month controls expose exact historical market totals beyond the annual chart.',
+        },
+        {
+          type: 'image',
+          src: '/projects/nz-vehicle-market-tracker/2.png',
+          alt: 'NZ Vehicle Market Tracker vehicle analysis showing July 2026 powertrain composition and leading hybrid makes with the Hybrid ranking filter selected.',
+          caption:
+            'Powertrain filters reveal the makes and models leading each vehicle category.',
         },
         {
           type: 'image',
@@ -57,6 +64,20 @@ export const projects: Project[] = [
           alt: 'Dashboard panels comparing NZ-new and used-import arrival channels within each powertrain and listing the leading models for June 2026.',
           caption:
             'Arrival-channel analysis shows how each major powertrain reaches the New Zealand fleet.',
+        },
+        {
+          type: 'image',
+          src: '/projects/nz-vehicle-market-tracker/6.png',
+          alt: 'Interactive current-fleet age chart showing average, median, and most common vehicle ages with the 20-year-old bar selected.',
+          caption:
+            'The current-fleet age profile combines summary statistics with selectable age-level counts.',
+        },
+        {
+          type: 'image',
+          src: '/projects/nz-vehicle-market-tracker/7.png',
+          alt: 'Current-fleet used-import analysis showing previous registration countries and the approximate age distribution at New Zealand entry.',
+          caption:
+            'The import-origin view switches from the latest month to the full 2007-and-later current-fleet cohort.',
         },
         {
           type: 'image',
@@ -86,7 +107,7 @@ export const projects: Project[] = [
           },
           {
             label: 'Automated checks',
-            value: '23 tests',
+            value: '29 tests',
           },
         ],
       },
@@ -114,7 +135,7 @@ export const projects: Project[] = [
           {
             label: 'Versioned aggregates',
             detail:
-              'Write ten compact JSON datasets with record counts, SHA-256 checksums, and monthly archives',
+              'Write fifteen compact JSON datasets with record counts, SHA-256 checksums, and monthly archives',
           },
           {
             label: 'Dashboard delivery',
