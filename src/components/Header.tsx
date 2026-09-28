@@ -21,7 +21,7 @@ function GitHubIcon({ className }: { className?: string }) {
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-10 border-b border-zinc-200 bg-white/85 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/85">
+    <header className="sticky top-0 z-10 border-b border-zinc-800 bg-zinc-950/85 backdrop-blur">
       <div className="mx-auto flex w-full max-w-4xl items-center justify-between px-4 py-3 sm:px-6">
         <a href="#top" className="text-base font-semibold tracking-tight">
           Michael
@@ -34,8 +34,7 @@ export function Header() {
                   href={link.href}
                   className={cn(
                     'underline-offset-4 hover:underline',
-                    'text-zinc-600 hover:text-zinc-900',
-                    'dark:text-zinc-400 dark:hover:text-zinc-100',
+                    'text-zinc-400 hover:text-zinc-100',
                   )}
                 >
                   {link.label}
@@ -48,7 +47,7 @@ export function Header() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub profile"
-                className="block text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                className="block text-zinc-400 hover:text-zinc-100"
               >
                 <GitHubIcon className="h-5 w-5" />
               </a>
