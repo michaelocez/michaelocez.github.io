@@ -168,7 +168,7 @@ export const projects: Project[] = [
   {
     title: 'Roblox Game',
     description:
-      'A multiplayer tower obby developed on Roblox, built in Roblox Studio and scripted in Luau.',
+      'Developed a multiplayer Roblox game using Roblox Studio and Luau, with 3,000+ visits.',
     tech: ['Roblox Studio', 'Luau'],
     links: [],
     images: [],
