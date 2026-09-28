@@ -3,6 +3,7 @@ import type { KeyboardEvent as ReactKeyboardEvent, MouseEvent as ReactMouseEvent
 import { createPortal } from 'react-dom'
 import type { Project } from '@/content/portfolio'
 import { projects } from '@/content/portfolio'
+import { useSpotlight } from '@/hooks/useSpotlight'
 import { ImageModal } from './ImageModal'
 import { Reveal } from './Reveal'
 import { Section } from './Section'
@@ -12,21 +13,24 @@ interface GalleryState {
   index: number
 }
 
+const GALLERY_OPEN_DELAY_MS = 300
+
 function ProjectCard({
   project,
   onOpen,
 }: {
   project: Project
-  onOpen: (project: Project) => void
+  onOpen: (project: Project, delayMs: number) => void
 }) {
   const hasGallery = project.images.length > 0
+  const spotRef = useSpotlight<HTMLElement>()
 
   const handleClick = (event: ReactMouseEvent) => {
     if ((event.target as HTMLElement).closest('a')) {
       return
     }
     if (hasGallery) {
-      onOpen(project)
+      onOpen(project, GALLERY_OPEN_DELAY_MS)
     }
   }
 
@@ -36,12 +40,13 @@ function ProjectCard({
     }
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
-      onOpen(project)
+      onOpen(project, 0)
     }
   }
 
   return (
     <article
+      ref={hasGallery ? spotRef : undefined}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role={hasGallery ? 'button' : undefined}
@@ -51,7 +56,7 @@ function ProjectCard({
       }
       className={
         hasGallery
-          ? 'flex cursor-pointer flex-col rounded-lg border border-zinc-200 bg-white p-5 hover:border-zinc-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-600 dark:focus-visible:outline-zinc-100 sm:p-6'
+          ? 'spotlight flex cursor-pointer flex-col rounded-lg border border-zinc-200 bg-white p-5 hover:border-zinc-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-600 dark:focus-visible:outline-zinc-100 sm:p-6'
           : 'flex flex-col rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950 sm:p-6'
       }
     >
@@ -95,13 +100,23 @@ export function Projects() {
   const [lead, ...rest] = projects
   const [gallery, setGallery] = useState<GalleryState | null>(null)
   const openerRef = useRef<HTMLElement | null>(null)
+  const timeoutRef = useRef<number>(0)
 
-  const openGallery = (project: Project) => {
+  useEffect(() => () => window.clearTimeout(timeoutRef.current), [])
+
+  const openGallery = (project: Project, delayMs: number) => {
     openerRef.current =
       document.activeElement instanceof HTMLElement
         ? document.activeElement
         : null
-    setGallery({ project, index: 0 })
+    window.clearTimeout(timeoutRef.current)
+    if (delayMs <= 0) {
+      setGallery({ project, index: 0 })
+      return
+    }
+    timeoutRef.current = window.setTimeout(() => {
+      setGallery({ project, index: 0 })
+    }, delayMs)
   }
 
   useEffect(() => {
