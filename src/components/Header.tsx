@@ -1,9 +1,6 @@
 import { cn } from '@/lib/utils'
 
-const links = [
-  { label: 'Projects', href: '#projects' },
-  { label: 'About', href: '#about' },
-]
+const links = [{ label: 'Projects', href: '#projects' }]
 
 function GitHubIcon({ className }: { className?: string }) {
   return (

@@ -1,4 +1,3 @@
-import { About } from '@/components/About'
 import { GlobalSparks } from '@/components/GlobalSparks'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
@@ -25,7 +24,6 @@ function App() {
       >
         <Hero />
         <Projects />
-        <About />
       </main>
       <footer className="border-t border-zinc-800">
         <div className="mx-auto w-full max-w-4xl px-4 py-4 text-sm text-zinc-400 sm:px-6">
