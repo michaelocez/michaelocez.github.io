@@ -8,7 +8,7 @@ export function Hero() {
           Michael
         </h1>
         <p className="mt-4 max-w-prose text-base leading-relaxed text-zinc-400">
-          Computer Science graduate with a Statistics minor.
+          Bachelor of Science, Computer Science, with a minor in Statistics.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <a

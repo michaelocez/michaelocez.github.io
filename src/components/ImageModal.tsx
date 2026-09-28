@@ -17,6 +17,7 @@ export function ImageModal({
   const total = project.images.length
   const image = project.images[index]
   const closeRef = useRef<HTMLButtonElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     closeRef.current?.focus()
@@ -28,6 +29,22 @@ export function ImageModal({
         onIndexChange((index + 1) % total)
       } else if (event.key === 'ArrowLeft') {
         onIndexChange((index - 1 + total) % total)
+      } else if (event.key === 'Tab' && panelRef.current) {
+        const items = panelRef.current.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), a[href]',
+        )
+        const first = items[0]
+        const last = items[items.length - 1]
+        if (!first || !last) {
+          return
+        }
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault()
+          last.focus()
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault()
+          first.focus()
+        }
       }
     }
     window.addEventListener('keydown', onKeyDown)
@@ -56,7 +73,7 @@ export function ImageModal({
         onClick={onClose}
         className="absolute inset-0 bg-black/70"
       />
-      <div className="relative flex max-h-full w-full max-w-4xl flex-col rounded-lg border border-zinc-800 bg-zinc-950 p-4 sm:p-6">
+      <div ref={panelRef} className="relative flex max-h-full w-full max-w-4xl flex-col rounded-lg border border-zinc-800 bg-zinc-950 p-4 sm:p-6">
         <div className="mb-4 flex items-center justify-between gap-4">
           <p className="text-sm font-medium text-zinc-100">
             {project.title} ({index + 1} of {total})
