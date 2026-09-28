@@ -1,4 +1,5 @@
 import { About } from '@/components/About'
+import { GlobalSparks } from '@/components/GlobalSparks'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { Projects } from '@/components/Projects'
@@ -29,6 +30,7 @@ function App() {
           Michael
         </div>
       </footer>
+      <GlobalSparks />
     </div>
   )
 }
