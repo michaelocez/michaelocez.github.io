@@ -34,31 +34,31 @@ export const projects: Project[] = [
     ],
     images: [
       {
-        src: '/imgs/nz-vehicle-market-tracker/1.png',
+        src: '/imgs/nz-vehicle-market-tracker/1.webp',
         alt: 'Dashboard hero showing the August 2026 headline fleet entry total and NZ-new versus used import split',
       },
       {
-        src: '/imgs/nz-vehicle-market-tracker/2.png',
+        src: '/imgs/nz-vehicle-market-tracker/2.webp',
         alt: 'Market flow chart of annual NZ-new versus used import entries from 2017 to 2026',
       },
       {
-        src: '/imgs/nz-vehicle-market-tracker/3.png',
+        src: '/imgs/nz-vehicle-market-tracker/3.webp',
         alt: 'Powertrain breakdown and top makes ranking for August 2026',
       },
       {
-        src: '/imgs/nz-vehicle-market-tracker/4.png',
+        src: '/imgs/nz-vehicle-market-tracker/4.webp',
         alt: 'Arrival channel by powertrain, top models ranking, and current fleet age distribution',
       },
       {
-        src: '/imgs/nz-vehicle-market-tracker/5.png',
+        src: '/imgs/nz-vehicle-market-tracker/5.webp',
         alt: 'Used import analysis showing previous registration countries and import age distribution',
       },
       {
-        src: '/imgs/nz-vehicle-market-tracker/6.png',
+        src: '/imgs/nz-vehicle-market-tracker/6.webp',
         alt: 'Make and model explorer showing Toyota fleet totals',
       },
       {
-        src: '/imgs/nz-vehicle-market-tracker/7.png',
+        src: '/imgs/nz-vehicle-market-tracker/7.webp',
         alt: 'Methodology section describing the scoped passenger vehicle dataset',
       },
     ],
@@ -80,31 +80,31 @@ export const projects: Project[] = [
     ],
     images: [
       {
-        src: '/imgs/game-review/1.png',
+        src: '/imgs/game-review/1.webp',
         alt: 'Game Review Site browse page showing game cards with genre, price, and rating',
       },
       {
-        src: '/imgs/game-review/2.png',
+        src: '/imgs/game-review/2.webp',
         alt: 'Game detail page showing description, rating, wishlist buttons, and similar games',
       },
       {
-        src: '/imgs/game-review/3.png',
+        src: '/imgs/game-review/3.webp',
         alt: 'Game detail page showing similar games, user reviews, and a review submission form',
       },
       {
-        src: '/imgs/game-review/4.png',
+        src: '/imgs/game-review/4.webp',
         alt: 'Browse page filtered to wishlisted and owned games',
       },
       {
-        src: '/imgs/game-review/5.png',
+        src: '/imgs/game-review/5.webp',
         alt: 'Edit profile form with name, email, and password fields',
       },
       {
-        src: '/imgs/game-review/6.png',
+        src: '/imgs/game-review/6.webp',
         alt: 'Browse page on a narrow screen with stacked filters',
       },
       {
-        src: '/imgs/game-review/7.png',
+        src: '/imgs/game-review/7.webp',
         alt: 'Game detail page on a narrow screen',
       },
     ],
@@ -122,19 +122,19 @@ export const projects: Project[] = [
     ],
     images: [
       {
-        src: '/imgs/cart-filler-game/1.png',
+        src: '/imgs/cart-filler-game/1.webp',
         alt: 'Cart Filler tower selection screen showing tower stats and selected towers',
       },
       {
-        src: '/imgs/cart-filler-game/2.png',
+        src: '/imgs/cart-filler-game/2.webp',
         alt: 'Cart Filler gameplay showing score 120 on wave 5 of 5 with towers around the track',
       },
       {
-        src: '/imgs/cart-filler-game/3.png',
+        src: '/imgs/cart-filler-game/3.webp',
         alt: 'Cart Filler shop and inventory screen showing tower upgrades on wave 3 of 5',
       },
       {
-        src: '/imgs/cart-filler-game/4.png',
+        src: '/imgs/cart-filler-game/4.webp',
         alt: 'Cart Filler upgrade choice screen with damage, speed, and cash options',
       },
     ],
@@ -152,15 +152,15 @@ export const projects: Project[] = [
     ],
     images: [
       {
-        src: '/imgs/car-colour-analysis/1.png',
+        src: '/imgs/car-colour-analysis/1.webp',
         alt: 'Bar chart comparing UC carpark vehicle colour observations with national proportions',
       },
       {
-        src: '/imgs/car-colour-analysis/2.png',
+        src: '/imgs/car-colour-analysis/2.webp',
         alt: 'Chart of standardised residuals showing which vehicle colours drove the difference',
       },
       {
-        src: '/imgs/car-colour-analysis/3.png',
+        src: '/imgs/car-colour-analysis/3.webp',
         alt: 'Chart checking the chi-square assumption with expected vehicle counts per colour',
       },
     ],
