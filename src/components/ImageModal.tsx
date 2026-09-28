@@ -56,9 +56,9 @@ export function ImageModal({
         onClick={onClose}
         className="absolute inset-0 bg-black/70"
       />
-      <div className="relative flex max-h-full w-full max-w-4xl flex-col rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950 sm:p-6">
+      <div className="relative flex max-h-full w-full max-w-4xl flex-col rounded-lg border border-zinc-800 bg-zinc-950 p-4 sm:p-6">
         <div className="mb-4 flex items-center justify-between gap-4">
-          <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+          <p className="text-sm font-medium text-zinc-100">
             {project.title} ({index + 1} of {total})
           </p>
           <button
@@ -66,12 +66,12 @@ export function ImageModal({
             type="button"
             onClick={onClose}
             aria-label="Close screenshots"
-            className="rounded-md border border-zinc-300 px-3 py-1 text-sm font-medium text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-900"
+            className="rounded-md border border-zinc-700 px-3 py-1 text-sm font-medium text-zinc-100 hover:bg-zinc-900"
           >
             Close
           </button>
         </div>
-        <div className="flex h-[50vh] items-center justify-center rounded-md border border-zinc-200 dark:border-zinc-800 sm:h-[60vh]">
+        <div className="flex h-[50vh] items-center justify-center rounded-md border border-zinc-800 sm:h-[60vh]">
           <img
             src={image.src}
             alt={image.alt}
@@ -83,18 +83,18 @@ export function ImageModal({
             type="button"
             onClick={() => onIndexChange((index - 1 + total) % total)}
             aria-label="Previous screenshot"
-            className="w-24 shrink-0 rounded-md border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-900"
+            className="w-24 shrink-0 rounded-md border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-100 hover:bg-zinc-900"
           >
             Previous
           </button>
-          <p className="min-w-0 flex-1 text-center text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="min-w-0 flex-1 text-center text-sm text-zinc-400">
             {image.alt}
           </p>
           <button
             type="button"
             onClick={() => onIndexChange((index + 1) % total)}
             aria-label="Next screenshot"
-            className="w-24 shrink-0 rounded-md border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-900"
+            className="w-24 shrink-0 rounded-md border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-100 hover:bg-zinc-900"
           >
             Next
           </button>

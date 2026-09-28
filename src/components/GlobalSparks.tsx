@@ -38,10 +38,7 @@ export function GlobalSparks() {
     function frame() {
       ctx?.clearRect(0, 0, window.innerWidth, window.innerHeight)
       const now = performance.now()
-      const color = window.matchMedia('(prefers-color-scheme: dark)')
-        .matches
-        ? '212 212 216'
-        : '63 63 70'
+      const color = '212 212 216'
       let alive = false
       for (const spark of sparks) {
         const t = (now - spark.start) / DURATION_MS

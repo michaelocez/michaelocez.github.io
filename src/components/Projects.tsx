@@ -56,12 +56,12 @@ function ProjectCard({
       }
       className={
         hasGallery
-          ? 'spotlight flex cursor-pointer flex-col rounded-lg border border-zinc-200 bg-white p-5 hover:border-zinc-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-600 dark:focus-visible:outline-zinc-100 sm:p-6'
-          : 'flex flex-col rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950 sm:p-6'
+          ? 'spotlight flex cursor-pointer flex-col rounded-lg border border-zinc-800 bg-zinc-950 p-5 hover:border-zinc-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 sm:p-6'
+          : 'flex flex-col rounded-lg border border-zinc-800 bg-zinc-950 p-5 sm:p-6'
       }
     >
       <h3 className="text-lg font-semibold tracking-tight">{project.title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+      <p className="mt-2 text-sm leading-relaxed text-zinc-400">
         {project.description}
       </p>
       <ul
@@ -71,7 +71,7 @@ function ProjectCard({
         {project.tech.map((item) => (
           <li
             key={item}
-            className="rounded-md bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300"
+            className="rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-zinc-300"
           >
             {item}
           </li>
@@ -85,7 +85,7 @@ function ProjectCard({
               href={link.url}
               target="_blank"
               rel="noreferrer"
-              className="text-zinc-900 underline underline-offset-4 hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-400"
+              className="text-zinc-100 underline underline-offset-4 hover:text-zinc-400"
             >
               {link.label}
             </a>

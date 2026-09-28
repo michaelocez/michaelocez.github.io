@@ -1,7 +1,16 @@
 @import "tailwindcss";
 
+:root {
+  color-scheme: dark;
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #09090b;
 }
 
 .reveal {
@@ -43,7 +52,7 @@ html {
     transition: opacity 0.4s ease;
     background: radial-gradient(
       320px circle at var(--spot-x, 50%) var(--spot-y, 50%),
-      rgb(0 0 0 / 0.06),
+      rgb(255 255 255 / 0.09),
       transparent 70%
     );
     pointer-events: none;
@@ -51,16 +60,6 @@ html {
 
   .spotlight:hover::before {
     opacity: 1;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) and (prefers-color-scheme: dark) {
-  .spotlight::before {
-    background: radial-gradient(
-      320px circle at var(--spot-x, 50%) var(--spot-y, 50%),
-      rgb(255 255 255 / 0.09),
-      transparent 70%
-    );
   }
 }
 
