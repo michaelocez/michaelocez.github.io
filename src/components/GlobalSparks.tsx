@@ -77,9 +77,6 @@ export function GlobalSparks() {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         return
       }
-      if ((event.target as HTMLElement).closest('a,button')) {
-        return
-      }
       const now = performance.now()
       for (let i = 0; i < SPARK_COUNT; i++) {
         sparks.push({

@@ -104,6 +104,15 @@ export function Projects() {
 
   useEffect(() => () => window.clearTimeout(timeoutRef.current), [])
 
+  useEffect(() => {
+    for (const project of projects) {
+      for (const image of project.images) {
+        const loader = new Image()
+        loader.src = image.src
+      }
+    }
+  }, [])
+
   const openGallery = (project: Project, delayMs: number) => {
     openerRef.current =
       document.activeElement instanceof HTMLElement
