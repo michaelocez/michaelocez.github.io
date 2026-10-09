@@ -8,6 +8,8 @@ interface ImageModalProps {
   onClose: () => void
 }
 
+const FOCUSABLE = 'button:not([disabled]), a[href]'
+
 export function ImageModal({
   project,
   index,
@@ -21,7 +23,14 @@ export function ImageModal({
 
   useEffect(() => {
     closeRef.current?.focus()
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [])
 
+  useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         onClose()
@@ -30,9 +39,7 @@ export function ImageModal({
       } else if (event.key === 'ArrowLeft') {
         onIndexChange((index - 1 + total) % total)
       } else if (event.key === 'Tab' && panelRef.current) {
-        const items = panelRef.current.querySelectorAll<HTMLElement>(
-          'button:not([disabled]), a[href]',
-        )
+        const items = panelRef.current.querySelectorAll<HTMLElement>(FOCUSABLE)
         const first = items[0]
         const last = items[items.length - 1]
         if (!first || !last) {
@@ -48,13 +55,7 @@ export function ImageModal({
       }
     }
     window.addEventListener('keydown', onKeyDown)
-
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => {
-      window.removeEventListener('keydown', onKeyDown)
-      document.body.style.overflow = previousOverflow
-    }
+    return () => window.removeEventListener('keydown', onKeyDown)
   }, [index, total, onIndexChange, onClose])
 
   if (!image) {
@@ -66,52 +67,72 @@ export function ImageModal({
       role="dialog"
       aria-modal="true"
       aria-label={`${project.title} screenshots`}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8"
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6"
     >
       <div
         aria-hidden="true"
-        onClick={onClose}
-        className="absolute inset-0 bg-black/70"
+        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
       />
-      <div ref={panelRef} className="relative flex max-h-full w-full max-w-4xl flex-col rounded-lg border border-zinc-800 bg-zinc-950 p-4 sm:p-6">
-        <div className="mb-4 flex items-center justify-between gap-4">
-          <p className="text-sm font-medium text-zinc-100">
-            {project.title} ({index + 1} of {total})
+      <div
+        ref={panelRef}
+        onClick={(event) => event.stopPropagation()}
+        className="relative flex h-full max-h-full w-full max-w-5xl flex-col"
+      >
+        <div className="flex items-center justify-between gap-4">
+          <p className="min-w-0 truncate text-sm font-medium text-zinc-100">
+            {project.title}
+            <span className="ml-2 text-zinc-400">
+              {index + 1} / {total}
+            </span>
           </p>
           <button
             ref={closeRef}
             type="button"
             onClick={onClose}
             aria-label="Close screenshots"
-            className="rounded-md border border-zinc-700 px-3 py-1 text-sm font-medium text-zinc-100 hover:bg-zinc-900"
+            className="-mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-md text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100"
           >
-            Close
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              aria-hidden="true"
+              className="h-5 w-5"
+            >
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
           </button>
         </div>
-        <div className="flex h-[50vh] items-center justify-center rounded-md border border-zinc-800 sm:h-[60vh]">
+
+        <div className="mt-3 flex min-h-0 flex-1 items-center justify-center overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950/60">
           <img
             src={image.src}
             alt={image.alt}
-            className="h-full w-full object-contain"
+            className="max-h-full max-w-full object-contain"
           />
         </div>
-        <div className="mt-4 flex items-center gap-4">
+
+        <p className="mt-3 text-center text-sm leading-relaxed text-zinc-400">
+          {image.alt}
+        </p>
+
+        <div className="mt-3 flex items-center justify-center gap-3">
           <button
             type="button"
             onClick={() => onIndexChange((index - 1 + total) % total)}
             aria-label="Previous screenshot"
-            className="w-24 shrink-0 rounded-md border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-100 hover:bg-zinc-900"
+            className="flex h-11 w-28 items-center justify-center rounded-md border border-zinc-700 text-sm font-medium text-zinc-100 hover:bg-zinc-900"
           >
             Previous
           </button>
-          <p className="min-w-0 flex-1 text-center text-sm text-zinc-400">
-            {image.alt}
-          </p>
           <button
             type="button"
             onClick={() => onIndexChange((index + 1) % total)}
             aria-label="Next screenshot"
-            className="w-24 shrink-0 rounded-md border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-100 hover:bg-zinc-900"
+            className="flex h-11 w-28 items-center justify-center rounded-md border border-zinc-700 text-sm font-medium text-zinc-100 hover:bg-zinc-900"
           >
             Next
           </button>
