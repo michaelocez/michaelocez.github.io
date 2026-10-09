@@ -91,10 +91,10 @@ export function GlobalSparks() {
         raf = requestAnimationFrame(frame)
       }
     }
-    document.addEventListener('click', onClick)
+    document.addEventListener('click', onClick, true)
 
     return () => {
-      document.removeEventListener('click', onClick)
+      document.removeEventListener('click', onClick, true)
       window.removeEventListener('resize', resize)
       cancelAnimationFrame(raf)
       raf = 0

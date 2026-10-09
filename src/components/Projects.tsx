@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
-import type { KeyboardEvent as ReactKeyboardEvent, MouseEvent as ReactMouseEvent } from 'react'
+import type { MouseEvent as ReactMouseEvent } from 'react'
 import { createPortal } from 'react-dom'
 import type { Project } from '@/content/portfolio'
 import { projects } from '@/content/portfolio'
 import { useSpotlight } from '@/hooks/useSpotlight'
+import { cn } from '@/lib/utils'
 import { ImageModal } from './ImageModal'
 import { Reveal } from './Reveal'
 import { Section } from './Section'
@@ -25,40 +26,31 @@ function ProjectCard({
   const hasGallery = project.images.length > 0
   const spotRef = useSpotlight<HTMLElement>()
 
+  const open = () => {
+    const hoverCapable = window.matchMedia(
+      '(hover: hover) and (pointer: fine)',
+    ).matches
+    onOpen(project, hoverCapable ? GALLERY_OPEN_DELAY_MS : 0)
+  }
+
   const handleClick = (event: ReactMouseEvent) => {
-    if ((event.target as HTMLElement).closest('a')) {
+    const target = event.target as HTMLElement
+    if (target.closest('a') || target.closest('button')) {
       return
     }
     if (hasGallery) {
-      onOpen(project, GALLERY_OPEN_DELAY_MS)
-    }
-  }
-
-  const handleKeyDown = (event: ReactKeyboardEvent) => {
-    if (!hasGallery || event.target !== event.currentTarget) {
-      return
-    }
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      onOpen(project, 0)
+      open()
     }
   }
 
   return (
     <article
       ref={hasGallery ? spotRef : undefined}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      role={hasGallery ? 'button' : undefined}
-      tabIndex={hasGallery ? 0 : undefined}
-      aria-label={
-        hasGallery ? `Open screenshots for ${project.title}` : undefined
-      }
-      className={
-        hasGallery
-          ? 'spotlight flex cursor-pointer flex-col rounded-lg border border-zinc-800 bg-zinc-950 p-5 hover:border-zinc-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 sm:p-6'
-          : 'flex flex-col rounded-lg border border-zinc-800 bg-zinc-950 p-5 sm:p-6'
-      }
+      onClick={hasGallery ? handleClick : undefined}
+      className={cn(
+        'flex flex-col rounded-lg border border-zinc-800 bg-zinc-950 p-5 sm:p-6',
+        hasGallery && 'spotlight cursor-pointer hover:border-zinc-600',
+      )}
     >
       <h3 className="text-lg font-semibold tracking-tight">{project.title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-zinc-400">
@@ -77,19 +69,28 @@ function ProjectCard({
           </li>
         ))}
       </ul>
-      {project.links.length > 0 && (
-        <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
+      {(project.links.length > 0 || hasGallery) && (
+        <div className="mt-2 flex flex-wrap items-center gap-x-5 text-sm font-medium">
           {project.links.map((link) => (
             <a
               key={link.label}
               href={link.url}
               target="_blank"
               rel="noreferrer"
-              className="text-zinc-100 underline underline-offset-4 hover:text-zinc-400"
+              className="inline-flex h-11 items-center text-zinc-100 underline underline-offset-4 hover:text-zinc-400"
             >
               {link.label}
             </a>
           ))}
+          {hasGallery && (
+            <button
+              type="button"
+              onClick={open}
+              className="ml-auto inline-flex h-11 items-center text-zinc-100 underline underline-offset-4 hover:text-zinc-400"
+            >
+              View gallery ({project.images.length})
+            </button>
+          )}
         </div>
       )}
     </article>
