@@ -7,7 +7,9 @@ export function SiteBackground() {
   const [capable] = useState(() => isEffectCapable())
 
   if (!capable) {
-    return null
+    return (
+      <div aria-hidden="true" className="bg-fallback fixed inset-0 -z-10" />
+    )
   }
 
   return (

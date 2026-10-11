@@ -13,7 +13,7 @@ export function Hero() {
         <div className="mt-6 flex flex-wrap gap-3">
           <a
             href="#projects"
-            className="rounded-md bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-300"
+            className="inline-flex h-11 items-center rounded-md bg-zinc-100 px-4 text-sm font-medium text-zinc-900 hover:bg-zinc-300"
           >
             View projects
           </a>
@@ -21,7 +21,7 @@ export function Hero() {
             href="https://github.com/michaelocez"
             target="_blank"
             rel="noreferrer"
-            className="rounded-md border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-100 hover:bg-zinc-900"
+            className="inline-flex h-11 items-center rounded-md border border-zinc-700 px-4 text-sm font-medium text-zinc-100 hover:bg-zinc-900"
           >
             GitHub
           </a>

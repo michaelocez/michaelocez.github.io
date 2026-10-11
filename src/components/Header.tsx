@@ -1,5 +1,3 @@
-import { cn } from '@/lib/utils'
-
 const links = [{ label: 'Projects', href: '#projects' }]
 
 function GitHubIcon({ className }: { className?: string }) {
@@ -19,20 +17,20 @@ function GitHubIcon({ className }: { className?: string }) {
 export function Header() {
   return (
     <header className="sticky top-0 z-10 border-b border-zinc-800 bg-zinc-950/85 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-4xl items-center justify-between px-4 py-3 sm:px-6">
-        <a href="#top" className="text-base font-semibold tracking-tight">
+      <div className="mx-auto flex w-full max-w-4xl items-center justify-between px-4 py-2 sm:px-6">
+        <a
+          href="#top"
+          className="flex h-11 items-center text-base font-semibold tracking-tight"
+        >
           Michael
         </a>
         <nav aria-label="Primary">
-          <ul className="flex items-center gap-4 text-sm sm:gap-6">
+          <ul className="flex items-center gap-1 text-sm sm:gap-3">
             {links.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={cn(
-                    'underline-offset-4 hover:underline',
-                    'text-zinc-400 hover:text-zinc-100',
-                  )}
+                  className="flex h-11 items-center px-3 text-zinc-400 underline-offset-4 hover:text-zinc-100 hover:underline"
                 >
                   {link.label}
                 </a>
@@ -44,7 +42,7 @@ export function Header() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub profile"
-                className="block text-zinc-400 hover:text-zinc-100"
+                className="flex h-11 w-11 items-center justify-center text-zinc-400 hover:text-zinc-100"
               >
                 <GitHubIcon className="h-5 w-5" />
               </a>
