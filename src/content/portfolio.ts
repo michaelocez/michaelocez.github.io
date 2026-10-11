@@ -20,7 +20,7 @@ export const projects: Project[] = [
   {
     title: 'NZ Vehicle Market Tracker',
     description:
-      'Interactive dashboard tracking New Zealand passenger vehicles using NZTA open data. A streaming Python pipeline reduces each fleet release to small versioned aggregates, served by a static React dashboard that refreshes automatically.',
+      'Interactive dashboard tracking New Zealand passenger vehicles using NZTA open data. A streaming Python pipeline reduces each multi-gigabyte fleet release to small versioned aggregates, and a daily GitHub Actions job checks the release metadata before downloading, so unchanged releases cost nothing. Python is tested with pytest and checked by Ruff and CodeQL in CI.',
     tech: ['Python', 'React', 'TypeScript', 'Vite', 'GitHub Actions'],
     links: [
       {
@@ -33,6 +33,10 @@ export const projects: Project[] = [
       },
     ],
     images: [
+      {
+        src: '/imgs/nz-vehicle-market-tracker/architecture.svg',
+        alt: 'Architecture diagram. An NZTA all-vehicle-years ZIP feeds a streaming Python pipeline that writes validated aggregate JSON, which the static React dashboard reads, with a daily metadata check that reruns the pipeline only when the release changes.',
+      },
       {
         src: '/imgs/nz-vehicle-market-tracker/1.webp',
         alt: 'Dashboard hero showing the August 2026 headline fleet entry total and NZ-new versus used import split',
