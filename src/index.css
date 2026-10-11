@@ -19,6 +19,19 @@ body {
   background: #09090b;
 }
 
+:where(a, button, [role='button']):focus-visible {
+  outline: 2px solid #f4f4f5;
+  outline-offset: 2px;
+}
+
+.bg-fallback {
+  background: radial-gradient(
+    60rem 40rem at 70% -10%,
+    rgb(99 102 241 / 0.12),
+    transparent 70%
+  );
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(12px);
